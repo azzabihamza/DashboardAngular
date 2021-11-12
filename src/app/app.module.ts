@@ -7,7 +7,8 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { TopbarComponent } from './components/shared/topbar/topbar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { IonicModule } from '@ionic/angular';
-import { MainPageComponent } from './components/shared/main-page/main-page.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MainPageComponent } from './components/shared/main-page/main-page.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    IonicModule.forRoot()
+    IonicModule.forRoot(),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

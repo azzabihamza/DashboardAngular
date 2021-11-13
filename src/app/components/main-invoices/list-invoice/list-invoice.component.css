@@ -18,3 +18,11 @@
   padding: 4px;
   word-wrap: normal;
 }
+/** table style **/
+table.dataTable.no-footer{
+  border-bottom: 1px solid silver;
+}
+.table thead {
+  background-color: transparent;
+  border-bottom: 0;
+}

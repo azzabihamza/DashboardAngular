@@ -15,6 +15,7 @@ import { MainStockComponent } from './components/main-stock/main-stock.component
 import { MainShopComponent } from './components/main-shop/main-shop.component';
 import { MainProvidersComponent } from './components/main-providers/main-providers.component';
 import { MainInvoicesComponent } from './components/main-invoices/main-invoices.component';
+import { ListInvoiceComponent } from './components/main-invoices/list-invoice/list-invoice.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MainInvoicesComponent } from './components/main-invoices/main-invoices.
     MainStockComponent,
     MainShopComponent,
     MainProvidersComponent,
-    MainInvoicesComponent
+    MainInvoicesComponent,
+    ListInvoiceComponent
   ],
   imports: [
     BrowserModule,

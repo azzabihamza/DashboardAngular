@@ -16,6 +16,7 @@ import { MainShopComponent } from './components/main-shop/main-shop.component';
 import { MainProvidersComponent } from './components/main-providers/main-providers.component';
 import { MainInvoicesComponent } from './components/main-invoices/main-invoices.component';
 import { ListInvoiceComponent } from './components/main-invoices/list-invoice/list-invoice.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ListInvoiceComponent } from './components/main-invoices/list-invoice/li
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     IonicModule.forRoot(),
     NgbModule
   ],

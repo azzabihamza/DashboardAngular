@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { InvoiceService } from '../../../services/invoice.service'
+import { Invoice } from '../../../models/invoice'
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-list-invoice',
@@ -7,9 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListInvoiceComponent implements OnInit {
 
-  constructor() { }
+  invoices: Invoice[] | undefined;
+
+  constructor(private invoiceService: InvoiceService) { }
 
   ngOnInit(): void {
+    this.invoiceService.getInvoices().subscribe((invoices) => (this.invoices = invoices));
   }
 
 }

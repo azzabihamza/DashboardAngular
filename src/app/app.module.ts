@@ -15,6 +15,11 @@ import { MainStockComponent } from './components/main-stock/main-stock.component
 import { MainShopComponent } from './components/main-shop/main-shop.component';
 import { MainProvidersComponent } from './components/main-providers/main-providers.component';
 import { MainInvoicesComponent } from './components/main-invoices/main-invoices.component';
+import { ListProvidersComponent } from './components/main-providers/list-providers/list-providers.component';
+import { EditProvidersComponent } from './components/main-providers/edit-providers/edit-providers.component';
+import { AddProvidersComponent } from './components/main-providers/add-providers/add-providers.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProvidersServiceService } from './providers-service.service';
 
 @NgModule({
   declarations: [
@@ -28,15 +33,20 @@ import { MainInvoicesComponent } from './components/main-invoices/main-invoices.
     MainStockComponent,
     MainShopComponent,
     MainProvidersComponent,
-    MainInvoicesComponent
+    MainInvoicesComponent,
+    ListProvidersComponent,
+    EditProvidersComponent,
+    AddProvidersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     IonicModule.forRoot(),
-    NgbModule
+    NgbModule, 
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ProvidersServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

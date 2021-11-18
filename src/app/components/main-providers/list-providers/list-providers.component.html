@@ -1,0 +1,44 @@
+
+<div class="row">
+    
+    <div class="col-9" id="table">
+        <div>
+            <table class="table table-hover">
+            
+                <thead>
+                    <tr>
+                <th scope="col">Code de Fournisseur</th>
+                <th scope="col">Libelle de Fournisseur</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Numéro de téléphone</th>
+                <th scope="col">Date de creation</th>
+                <th scope="col">Categorie de produit</th>
+                <th scope="col">Supprimer</th>
+                <th scope="col">Update</th>
+            </tr>    
+            </thead>
+                
+            
+                <tbody >
+                    <tr  *ngFor="let u of providers ; let i=index " >
+                        <td>{{u.codeF}}</td>
+                        <td>{{u.libF}}</td>
+                        <td>{{u.adresseF}}</td>
+                        <td>{{u.numtel}}</td>
+                        <td>{{u.dateCreation}}</td>
+                        <td>{{u.categorieProduit}}</td>
+                        <td><button class="btn btn- btn-danger" (click)="deleteProvider(i)" >Supprimer</button></td>
+                        <td><button class="btn btn-secondary" (click)="showEditForm(u)" >Update  </button> </td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            
+    </div>
+    <div class="col-3" id="form">
+        <app-add-providers (ajouterevent)="AddProvider($event)" *ngIf="showAddProvider" ></app-add-providers>
+        <app-edit-providers (editProvider)="updateProvider($event)" [prop2]="myProvider" [ProviderToEdit]="myProvider" *ngIf="showEditProvider" ></app-edit-providers>
+    </div>
+
+</div>

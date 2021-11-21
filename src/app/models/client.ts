@@ -1,4 +1,4 @@
-import { Invoice } from "./invoice";
+import { Facture } from "./facture";
 
 export class Client {
   idClient: number | undefined;
@@ -9,5 +9,5 @@ export class Client {
   dateNaissance: Date | undefined;
   profession: string | undefined;
   categorieClient: string | undefined;
-  invoices: Invoice[] | undefined;
+  factures: Facture[] | undefined;
 }

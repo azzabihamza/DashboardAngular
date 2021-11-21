@@ -1,12 +1,12 @@
-import { Invoice } from "./invoice";
+import { Facture } from "./facture";
 import { Produit } from "./produit";
 
-export class InvoiceDetail {
+export class DetailFacture {
     idInvoiceDetail: number | undefined;
     amountDiscount: number | undefined;
     quantity: number | undefined;
     totalPrice: number | undefined;
     discountPrice: number | undefined;
     produit: Produit | undefined;
-    invoice: Invoice | undefined;
+    facture: Facture | undefined;
 }

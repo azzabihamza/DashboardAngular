@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InvoiceService } from '../../../services/invoice.service'
-import { Invoice } from '../../../models/invoice'
+import { Facture } from '../../../models/facture'
 import { Router } from '@angular/router';
 
 
@@ -11,12 +11,16 @@ import { Router } from '@angular/router';
 })
 export class ListInvoiceComponent implements OnInit {
 
-  invoices: Invoice[] | undefined;
+  invoices!: Facture[];
 
   constructor(private invoiceService: InvoiceService) { }
 
   ngOnInit(): void {
-    this.invoiceService.getInvoices().subscribe((invoices) => (this.invoices = invoices));
+    //this.invoiceService.getInvoices().subscribe((invoices) => (this.invoices = invoices));
+    this.getAllInvoices();
   }
 
+  getAllInvoices() {
+    this.invoiceService.findAllFactures().then((invoices) => {this.invoices = invoices}, (error) => {console.log(error)});
+  }
 }

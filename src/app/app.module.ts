@@ -17,6 +17,9 @@ import { MainProvidersComponent } from './components/main-providers/main-provide
 import { MainInvoicesComponent } from './components/main-invoices/main-invoices.component';
 import { ListInvoiceComponent } from './components/main-invoices/list-invoice/list-invoice.component';
 import { HttpClientModule } from '@angular/common/http';
+import { InvoiceFilterComponent } from './components/main-invoices/invoice-filter/invoice-filter.component';
+import { InvoiceFormComponent } from './components/main-invoices/invoice-form/invoice-form.component';
+import { InvoiceDetailFormComponent } from './components/main-invoices/invoice-detail-form/invoice-detail-form.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { HttpClientModule } from '@angular/common/http';
     MainShopComponent,
     MainProvidersComponent,
     MainInvoicesComponent,
-    ListInvoiceComponent
+    ListInvoiceComponent,
+    InvoiceFilterComponent,
+    InvoiceFormComponent,
+    InvoiceDetailFormComponent
   ],
   imports: [
     BrowserModule,

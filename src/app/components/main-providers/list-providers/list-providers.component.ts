@@ -66,7 +66,7 @@ export class ListProvidersComponent implements OnInit {
             this.providers[k]=i;
           }
         }
-        this.PS.UpdateFournisseur(i).subscribe();
+        
         this.showEditProvider=false;
         this.showAddProvider=true;
         

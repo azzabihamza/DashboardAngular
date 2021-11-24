@@ -15,7 +15,7 @@ export class ProvidersServiceService {
 
   public ajouterProvider(fournisseur: Fournisseur) : Observable<Fournisseur>{
 
-    return this.http.post<Fournisseur>("http://localhost:9595/SpringMVC/servlet/addFournisseur",fournisseur);
+    return this.http.post<Fournisseur>("http://localhost:9595/SpringMVC/servlet/addFournisseur",fournisseur, this.httpOptions);
   }
 
   httpOptions = {

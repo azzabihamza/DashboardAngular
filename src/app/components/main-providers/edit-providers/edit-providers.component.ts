@@ -52,8 +52,11 @@ constructor(private PS : ProvidersServiceService, private ac : ActivatedRoute) {
    }
    editFournisseur(){
     console.log(this.FormProviderEdit.getRawValue());
+    this.PS.UpdateFournisseur(this.FormProviderEdit.getRawValue()).subscribe();
     this.editProvider.emit(this.FormProviderEdit.getRawValue());
     this.FormProviderEdit.reset();
   }
+
+
 
 }

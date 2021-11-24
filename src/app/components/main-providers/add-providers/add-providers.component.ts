@@ -41,7 +41,8 @@ FournisseurAdd : Fournisseur ;
    }*/
    
    Ajouterf(){
-    this.ajouterevent.emit(this.FormProviderAdd.value);  
+    this.ajouterevent.emit(this.FormProviderAdd.value); 
+    this.PS.ajouterProvider(this.FormProviderAdd.getRawValue()).subscribe(); 
     this.FormProviderAdd.reset();
   }
 

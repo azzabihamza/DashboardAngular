@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, } from '@angular/forms';
 import { Fournisseur } from '../fournisseur';
 import {  Validators } from '@angular/forms';
+import { ProvidersServiceService } from 'src/app/providers-service.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-providers',
@@ -10,30 +12,37 @@ import {  Validators } from '@angular/forms';
 })
 export class AddProvidersComponent implements OnInit {
 FormProviderAdd : FormGroup; 
+FournisseurAdd : Fournisseur ; 
 @Output() ajouterevent : EventEmitter<Fournisseur>= new EventEmitter();
 
-  constructor() { }
+  constructor(private PS : ProvidersServiceService, private ac : ActivatedRoute) { }
 
   ngOnInit(): void {
     this.FormProviderAdd=new FormGroup({
-      codeF:new FormControl('',Validators.required),
-      libF:new FormControl('',Validators.required),
-      adresseF: new FormControl('',Validators.required),
+      codeFournisseur:new FormControl('',Validators.required),
+      libelleFournisseur:new FormControl('',Validators.required),
+      adresseFournisseur: new FormControl('',Validators.required),
       numtel: new FormControl('',[Validators.required,Validators.pattern("[0-9]{8}")]),
       dateCreation:new FormControl('',Validators.required),
       categorieProduit:new FormControl('',Validators.required)
     }) 
   }
-  get codeFC (){return this.FormProviderAdd.get('codeF');};
-  get libFC (){return this.FormProviderAdd.get("libF");};
-  get adresseFC (){return this.FormProviderAdd.get("adresseF");};
+  get codeFournisseurc(){return this.FormProviderAdd.get('codeFournisseur');};
+  get libelleFournisseurc (){return this.FormProviderAdd.get("libelleFournisseur");};
+  get adresseFournisseurc (){return this.FormProviderAdd.get("adresseFournisseur");};
   get numtelC (){return this.FormProviderAdd.get("numtel");};
   get dateCreationC (){return this.FormProviderAdd.get("dateCreation");};
   get categorieProduitC (){return this.FormProviderAdd.get("categorieProduit");};
+/*
   Ajouterf(){
     this.ajouterevent.emit(this.FormProviderAdd.value);  
     this.FormProviderAdd.reset();
  
-   }
+   }*/
+   
+   Ajouterf(){
+    this.ajouterevent.emit(this.FormProviderAdd.value);  
+    this.FormProviderAdd.reset();
+  }
 
 }

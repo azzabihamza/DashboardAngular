@@ -19,7 +19,8 @@ import { ListProvidersComponent } from './components/main-providers/list-provide
 import { EditProvidersComponent } from './components/main-providers/edit-providers/edit-providers.component';
 import { AddProvidersComponent } from './components/main-providers/add-providers/add-providers.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProvidersServiceService } from './providers-service.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -44,9 +45,11 @@ import { ProvidersServiceService } from './providers-service.service';
     IonicModule.forRoot(),
     NgbModule, 
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
+    
   ],
-  providers: [ProvidersServiceService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

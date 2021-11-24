@@ -1,4 +1,5 @@
-// Toggle menu
+// Toggle menu 
+ /*
 let toggle = document.querySelector('.toggle');
 let navigation = document.querySelector('.navigation');
 let main = document.querySelector('.main');
@@ -13,7 +14,7 @@ $(".navigation li").hover(
             //toggleClass() switches the active class
             $(this).toggleClass("active");
         }
-    );
+    );*/
 
 /*
 // add hovered class in selected list item

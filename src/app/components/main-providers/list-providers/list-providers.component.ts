@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Fournisseur } from '../fournisseur';
+import { ProvidersServiceService } from 'src/app/providers-service.service';
+import { ActivatedRoute } from '@angular/router';
+
+interface categorieProduit {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-list-providers',
@@ -11,25 +18,40 @@ export class ListProvidersComponent implements OnInit {
   myProvider : Fournisseur;
   showEditProvider:Boolean = false;
   showAddProvider:Boolean = true;
+  SelectedCat:String ;
+  dateDebut : string ='';
+  dateFin : string = '';
 
-  constructor() { }
+  constructor(private PS : ProvidersServiceService, private ac : ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.providers= ([
-      {codeF : "1" , libF: "lib1", adresseF: "adr1", numtel: "4545484", dateCreation : "2021-04-04",categorieProduit: "Electromenager"  },
-      {codeF : "2" , libF: "lib2", adresseF: "adr2", numtel: "799866", dateCreation : "2021-10-05",categorieProduit: "Alimentaire"  },
-      {codeF : "3" , libF: "lib3", adresseF: "adr3", numtel: "76786", dateCreation : "2019-09-09",categorieProduit: "Quincaillerie"  }
-    ])
+    this.PS.getAllProviders().subscribe((prov)=>this.providers=prov);
   }
 
   AddProvider(i:Fournisseur){
     this.providers.push(i);
+    this.PS.ajouterProvider(i);
     console.log(i);
       }
-  deleteProvider( i : number){
-    this.providers.splice(i,1);
+  deleteProvider( i : bigint,j : number){
+    this.providers.splice(j,1);
+    this.PS.RemoveProvider(i).subscribe(); 
     
       }
+      rechercheCat(i:string){
+          this.PS.RechercheByCat(i).subscribe((res)=>this.providers=res);
+          console.log(i);
+      }
+      resetlist(){
+        this.PS.getAllProviders().subscribe((prov)=>this.providers=prov);
+
+      }
+      rechercheDate(){
+        this.PS.Recherchebydate(this.dateDebut, this.dateFin).subscribe((res)=>this.providers=res);
+        
+    }
+     
+
       showEditForm(i:Fournisseur){
         // this.show=!this.show;
         this.showEditProvider=true;
@@ -40,13 +62,19 @@ export class ListProvidersComponent implements OnInit {
 
        updateProvider(i:Fournisseur){
         for (let k in this.providers){
-          if (this.providers[k].codeF == i.codeF){
+          if (this.providers[k].idFournisseur == i.idFournisseur){
             this.providers[k]=i;
           }
         }
+        this.PS.UpdateFournisseur(i).subscribe();
         this.showEditProvider=false;
         this.showAddProvider=true;
         
       }
+      categories: categorieProduit[] = [
+        {value: 'ELECTROMENAGER', viewValue: 'ELECTROMENAGER'},
+        {value: 'ALIMENTAIRE', viewValue: 'ALIMENTAIRE'},
+        {value: 'QUINCAILLERIE', viewValue: 'QUINCAILLERIE'},
+      ];
 
 }

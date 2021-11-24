@@ -1,44 +1,75 @@
 
+
 <div class="row">
-    
-    <div class="col-9" id="table">
+
+    <div id="table" style="width: 80%;">
+        <div class="row" id="deuxDate" style="margin-left: 0.5%; margin-bottom: 1;">
+            <p style="margin-left: 5%;">Recherche des Fournisseur avec periode de cration</p>
+
+            <div class="col">
+                1er Date
+                <input type="date" [(ngModel)]="dateDebut" class="form-control" >
+                
+            </div>
+            <div class="col">
+                2eme Date
+                <input type="date" [(ngModel)]="dateFin" class="form-control">
+            </div>
+            <div class="col">
+
+            </div>
+
+
+        </div>
+        <div>           
+                <button class="btn btn-info" (click)="rechercheCat('QUINCAILLERIE')" style="margin-left: 20px ; margin-top: 5px ; margin-bottom: 5px;" >QUINCAILLERIE</button>
+                <button class="btn btn-info" (click)="rechercheCat('ALIMENTAIRE')" style="margin-left: 20px ; margin-top: 5px ; margin-bottom: 5px;" >ALIMENTAIRE</button>
+                <button class="btn btn-info" (click)="rechercheCat('ELECTROMENAGER')" style="margin-left: 20px ; margin-top: 5px ; margin-bottom: 5px;" >ELECTROMENAGER</button>
+                <button class="btn btn-info" style="margin-left: 20px ; margin-top: 5px ; margin-bottom: 5px;" (click)="rechercheDate()" >Par Date</button>
+                <button class="btn btn-info" (click)="resetlist()" style="margin-left: 20px ; margin-top: 5px ; margin-bottom: 5px;" >All</button>
+        </div>
+       
+
         <div>
             <table class="table table-hover">
-            
+
                 <thead>
                     <tr>
-                <th scope="col">Code de Fournisseur</th>
-                <th scope="col">Libelle de Fournisseur</th>
-                <th scope="col">Adresse</th>
-                <th scope="col">Numéro de téléphone</th>
-                <th scope="col">Date de creation</th>
-                <th scope="col">Categorie de produit</th>
-                <th scope="col">Supprimer</th>
-                <th scope="col">Update</th>
-            </tr>    
-            </thead>
-                
-            
-                <tbody >
-                    <tr  *ngFor="let u of providers ; let i=index " >
-                        <td>{{u.codeF}}</td>
-                        <td>{{u.libF}}</td>
-                        <td>{{u.adresseF}}</td>
+                        <th scope="col">Code de Fournisseur</th>
+                        <th scope="col">Libelle de Fournisseur</th>
+                        <th scope="col">Adresse</th>
+                        <th scope="col">Numéro de téléphone</th>
+                        <th scope="col">Date de creation</th>
+                        <th scope="col">Categorie de produit</th>
+                        <th scope="col">Supprimer</th>
+                        <th scope="col">Update</th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    <tr *ngFor="let u of providers ; let i=index ">
+                        <td>{{u.codeFournisseur}}</td>
+                        <td>{{u.libelleFournisseur}}</td>
+                        <td>{{u.adresseFournisseur}}</td>
                         <td>{{u.numtel}}</td>
                         <td>{{u.dateCreation}}</td>
                         <td>{{u.categorieProduit}}</td>
-                        <td><button class="btn btn- btn-danger" (click)="deleteProvider(i)" >Supprimer</button></td>
-                        <td><button class="btn btn-secondary" (click)="showEditForm(u)" >Update  </button> </td>
-                        
+                        <td><button class="btn btn- btn-danger"
+                                (click)="deleteProvider(u.idFournisseur,i)">Supprimer</button></td>
+                        <td><button class="btn btn-secondary" (click)="showEditForm(u)">Update </button> </td>
+
                     </tr>
                 </tbody>
             </table>
-            </div>
-            
+        </div>
+
     </div>
-    <div class="col-3" id="form">
-        <app-add-providers (ajouterevent)="AddProvider($event)" *ngIf="showAddProvider" ></app-add-providers>
-        <app-edit-providers (editProvider)="updateProvider($event)" [prop2]="myProvider" [ProviderToEdit]="myProvider" *ngIf="showEditProvider" ></app-edit-providers>
+    <div style="width: 20%;" id="form">
+        <app-add-providers (ajouterevent)="AddProvider($event)" *ngIf="showAddProvider"></app-add-providers>
+        <app-edit-providers (editProvider)="updateProvider($event)" [prop2]="myProvider" [ProviderToEdit]="myProvider" *ngIf="showEditProvider"></app-edit-providers>
+
+
     </div>
 
 </div>

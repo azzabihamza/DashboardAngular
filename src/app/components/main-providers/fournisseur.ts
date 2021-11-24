@@ -1,9 +1,10 @@
 export class Fournisseur {
-    codeF: String ; 
-    libF : String ; 
-    adresseF : String ; 
+    idFournisseur : bigint; 
+    codeFournisseur: String ; 
+    libelleFournisseur : String ; 
+    adresseFournisseur : String ; 
     numtel : String ; 
-    dateCreation : String ; 
+    dateCreation : Date ; 
     categorieProduit : String; 
 
 

@@ -2,15 +2,15 @@
 <form [formGroup]="FormProviderEdit" (submit)="editFournisseur()" >
     <div class="form-group" >
         <label>Code de Fournisseur</label>
-        <input type="text" class="form-control" formControlName="codeF">
+        <input type="text" class="form-control" formControlName="codeFournisseur">
     </div> 
     <div class="form-group">
         <label>Libelle de Fournisseur</label>
-        <input type="text" class="form-control" formControlName="libF">
+        <input type="text" class="form-control" formControlName="libelleFournisseur">
     </div> 
     <div class="form-group">
         <label>Adresse</label>
-        <input type="text" class="form-control" formControlName="adresseF">
+        <input type="text" class="form-control" formControlName="adresseFournisseur">
     </div>
     <div class="form-group">
         <label>Numéro de téléphone</label>
@@ -27,9 +27,9 @@
         <label>Categorie de produit</label>
         <select class="custom-select mr-sm-2" formControlName="categorieProduit">
             <option selected>Choose...</option>
-            <option value="Electromenager">Electromenager</option>
-            <option value="Alimentaire">Alimentaire</option>
-            <option value="Quincaillerie">Quincaillerie</option>
+            <option value="ELECTROMENAGER">ELECTROMENAGER</option>
+            <option value="ALIMENTAIRE">ALIMENTAIRE</option>
+            <option value="QUINCAILLERIE">QUINCAILLERIE</option>
           </select>
     </div>
     <br>

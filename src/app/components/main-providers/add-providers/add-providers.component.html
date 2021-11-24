@@ -1,25 +1,26 @@
 <h3 style="text-align: center;">Ajouter un Fournisseur </h3>
 <form [formGroup]="FormProviderAdd" (submit)="Ajouterf()">
+  
     <div class="form-group" >
         <label>Code de Fournisseur</label>
-        <input type="text" class="form-control" formControlName="codeF">
+        <input type="text" class="form-control" formControlName="codeFournisseur">
     </div> 
-    <div *ngIf="codeFC.invalid&&codeFC.touched">
-        <div  class="alert alert-danger" *ngIf="codeFC.errors.required" role="alert">ce champs est obligatoire</div>
+    <div *ngIf="codeFournisseurc.invalid&&codeFournisseurc.touched">
+        <div  class="alert alert-danger" *ngIf="codeFournisseurc.errors.required" role="alert">ce champs est obligatoire</div>
     </div>
     <div class="form-group">
         <label>Libelle de Fournisseur</label>
-        <input type="text" class="form-control" formControlName="libF">
+        <input type="text" class="form-control" formControlName="libelleFournisseur">
     </div>
-    <div *ngIf="libFC.invalid&&libFC.touched">
-        <div  class="alert alert-danger" *ngIf="libFC.errors.required" role="alert">ce champs est obligatoire</div>
+    <div *ngIf="libelleFournisseurc.invalid&&libelleFournisseurc.touched">
+        <div  class="alert alert-danger" *ngIf="libelleFournisseurc.errors.required" role="alert">ce champs est obligatoire</div>
     </div> 
     <div class="form-group">
         <label>Adresse</label>
-        <input type="text" class="form-control" formControlName="adresseF">
+        <input type="text" class="form-control" formControlName="adresseFournisseur">
     </div>
-    <div *ngIf="adresseFC.invalid&&adresseFC.touched">
-        <div  class="alert alert-danger" *ngIf="adresseFC.errors.required" role="alert">ce champs est obligatoire</div>
+    <div *ngIf="adresseFournisseurc.invalid&&adresseFournisseurc.touched">
+        <div  class="alert alert-danger" *ngIf="adresseFournisseurc.errors.required" role="alert">ce champs est obligatoire</div>
     </div>
     <div class="form-group">
         <label>Numéro de téléphone</label>
@@ -38,11 +39,11 @@
     </div>
     <div class="form-group">
         <label>Categorie de produit</label>
-        <select class="custom-select mr-sm-2" formControlName="categorieProduit">
+        <select class="custom-select mr-sm-2"  formControlName="categorieProduit">
             <option selected>Choose...</option>
-            <option value="Electromenager">Electromenager</option>
-            <option value="Alimentaire">Alimentaire</option>
-            <option value="Quincaillerie">Quincaillerie</option>
+            <option value="ELECTROMENAGER">ELECTROMENAGER</option>
+            <option value="ALIMENTAIRE">ALIMENTAIRE</option>
+            <option value="QUINCAILLERIE">QUINCAILLERIE</option>
           </select>
     </div>
     <div *ngIf="categorieProduitC.invalid&&categorieProduitC.touched">

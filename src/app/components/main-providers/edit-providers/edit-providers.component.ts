@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import {  Validators } from '@angular/forms';
+import { ProvidersServiceService } from 'src/app/providers-service.service';
 
 import { ActivatedRoute } from '@angular/router';
 import { Fournisseur } from '../fournisseur';
@@ -17,13 +18,13 @@ export class EditProvidersComponent implements OnInit {
 @Output() editProvider = new EventEmitter<Fournisseur>();
 
 
-  constructor(private ac : ActivatedRoute) { }
+constructor(private PS : ProvidersServiceService, private ac : ActivatedRoute) { }
 
   ngOnInit(): void {
     this.FormProviderEdit=new FormGroup({
-      codeF:new FormControl({"value":this.ProviderToEdit.codeF, "disabled":true}),
-      libF:new FormControl(this.ProviderToEdit.libF),
-      adresseF: new FormControl(this.ProviderToEdit.adresseF),
+      codeFournisseur:new FormControl({"value":this.ProviderToEdit.codeFournisseur, "disabled":true}),
+      libelleFournisseur:new FormControl(this.ProviderToEdit.libelleFournisseur),
+      adresseFournisseur: new FormControl(this.ProviderToEdit.adresseFournisseur),
       numtel: new FormControl(this.ProviderToEdit.numtel,Validators.pattern("[0-9]{8}")),
       dateCreation:new FormControl(this.ProviderToEdit.dateCreation),
       categorieProduit:new FormControl(this.ProviderToEdit.categorieProduit)
@@ -42,8 +43,8 @@ export class EditProvidersComponent implements OnInit {
      })*/
      console.log(changes);
      if(!changes.ProviderToEdit.firstChange){
-     this.FormProviderEdit.setControl('libF',new FormControl(this.ProviderToEdit.libF));
-     this.FormProviderEdit.setControl('adressF',new FormControl(this.ProviderToEdit.adresseF));
+     this.FormProviderEdit.setControl('libelleFournisseur',new FormControl(this.ProviderToEdit.libelleFournisseur));
+     this.FormProviderEdit.setControl('adresseFournisseur',new FormControl(this.ProviderToEdit.adresseFournisseur));
      this.FormProviderEdit.setControl('numtel',new FormControl(this.ProviderToEdit.numtel));
      this.FormProviderEdit.setControl('dateCreation',new FormControl(this.ProviderToEdit.dateCreation));
      this.FormProviderEdit.setControl('categorieProduit',new FormControl(this.ProviderToEdit.categorieProduit));

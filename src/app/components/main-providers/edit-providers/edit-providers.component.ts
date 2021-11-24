@@ -13,6 +13,7 @@ import { Fournisseur } from '../fournisseur';
 export class EditProvidersComponent implements OnInit {
   FormProviderEdit : FormGroup;
   providers : Fournisseur[];
+  providerEdit : Fournisseur ; 
 @Input() ProviderToEdit : Fournisseur;
 @Input() prop2 : Fournisseur;
 @Output() editProvider = new EventEmitter<Fournisseur>();
@@ -22,6 +23,7 @@ constructor(private PS : ProvidersServiceService, private ac : ActivatedRoute) {
 
   ngOnInit(): void {
     this.FormProviderEdit=new FormGroup({
+      idFournisseur : new FormControl({"value" : this.ProviderToEdit.idFournisseur, "disabled":true}),
       codeFournisseur:new FormControl({"value":this.ProviderToEdit.codeFournisseur, "disabled":true}),
       libelleFournisseur:new FormControl(this.ProviderToEdit.libelleFournisseur),
       adresseFournisseur: new FormControl(this.ProviderToEdit.adresseFournisseur),
@@ -54,7 +56,7 @@ constructor(private PS : ProvidersServiceService, private ac : ActivatedRoute) {
     console.log(this.FormProviderEdit.getRawValue());
     this.PS.UpdateFournisseur(this.FormProviderEdit.getRawValue()).subscribe();
     this.editProvider.emit(this.FormProviderEdit.getRawValue());
-    this.FormProviderEdit.reset();
+    this.FormProviderEdit.reset();  
   }
 
 

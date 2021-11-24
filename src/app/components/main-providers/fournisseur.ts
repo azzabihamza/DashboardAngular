@@ -1,5 +1,5 @@
 export class Fournisseur {
-    idFournisseur : bigint; 
+    idFournisseur : number; 
     codeFournisseur: String ; 
     libelleFournisseur : String ; 
     adresseFournisseur : String ; 

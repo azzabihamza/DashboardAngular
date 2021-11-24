@@ -1,6 +1,12 @@
 <h3 style="text-align: center;">Modifier un Fournisseur </h3>
 <form [formGroup]="FormProviderEdit" (submit)="editFournisseur()" >
     <div class="form-group" >
+        
+        <label>id de Fournisseur</label>
+        <input type="text" class="form-control" formControlName="idFournisseur">
+    </div> 
+    <div class="form-group" >
+        
         <label>Code de Fournisseur</label>
         <input type="text" class="form-control" formControlName="codeFournisseur">
     </div> 

@@ -1,10 +1,7 @@
-
-
 <div class="row">
 
     <div id="table" style="width: 80%;">
-        <div class="row" id="deuxDate" style="margin-left: 0.5%; margin-bottom: 1;">
-            <p style="margin-left: 5%;">Recherche des Fournisseur avec periode de cration</p>
+        <div class="row" id="deuxDate" style="margin-left: 0.1%; margin-bottom: 1;">
 
             <div class="col">
                 1er Date
@@ -30,8 +27,8 @@
         </div>
        
 
-        <div>
-            <table class="table table-hover">
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table table-bordered table-striped sm-0 ">
 
                 <thead>
                     <tr>
@@ -55,8 +52,7 @@
                         <td>{{u.numtel}}</td>
                         <td>{{u.dateCreation}}</td>
                         <td>{{u.categorieProduit}}</td>
-                        <td><button class="btn btn- btn-danger"
-                                (click)="deleteProvider(u.idFournisseur,i)">Supprimer</button></td>
+                        <td><button class="btn btn- btn-danger" (click)="deleteProvider(u.idFournisseur,i)">Supprimer</button></td>
                         <td><button class="btn btn-secondary" (click)="showEditForm(u)">Update </button> </td>
 
                     </tr>
@@ -66,8 +62,8 @@
 
     </div>
     <div style="width: 20%;" id="form">
-        <app-add-providers (ajouterevent)="AddProvider($event)" *ngIf="showAddProvider"></app-add-providers>
-        <app-edit-providers (editProvider)="updateProvider($event)" [prop2]="myProvider" [ProviderToEdit]="myProvider" *ngIf="showEditProvider"></app-edit-providers>
+        <app-add-providers  class="table-wrapper-scroll-y my-custom-scrollbar" (ajouterevent)="AddProvider($event)" *ngIf="showAddProvider"></app-add-providers>
+        <app-edit-providers  class="table-wrapper-scroll-y my-custom-scrollbar" (editProvider)="updateProvider($event)" [prop2]="myProvider" [ProviderToEdit]="myProvider" *ngIf="showEditProvider"></app-edit-providers>
 
 
     </div>

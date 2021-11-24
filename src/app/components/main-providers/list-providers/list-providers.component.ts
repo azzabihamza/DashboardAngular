@@ -33,7 +33,7 @@ export class ListProvidersComponent implements OnInit {
     this.PS.ajouterProvider(i);
     console.log(i);
       }
-  deleteProvider( i : bigint,j : number){
+  deleteProvider( i : number ,j : number){
     this.providers.splice(j,1);
     this.PS.RemoveProvider(i).subscribe(); 
     
@@ -57,6 +57,7 @@ export class ListProvidersComponent implements OnInit {
         this.showEditProvider=true;
         this.showAddProvider=false; 
         this.myProvider=i;
+        
 
        }
 

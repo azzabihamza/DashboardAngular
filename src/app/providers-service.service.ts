@@ -29,17 +29,17 @@ export class ProvidersServiceService {
     return this.http.get<Fournisseur[]>("http://localhost:9595/SpringMVC/servlet/retrieveFournisseur");
   }
 
-  RemoveProvider(Fournisseur: Fournisseur | bigint): Observable<Fournisseur> {
-    const id = typeof Fournisseur === 'bigint' ? Fournisseur : Fournisseur.idFournisseur;
+  RemoveProvider(Fournisseur: Fournisseur | number): Observable<Fournisseur> {
+    const id = typeof Fournisseur === 'number' ? Fournisseur : Fournisseur.idFournisseur;
     const url = 'http://localhost:9595/SpringMVC/servlet/removeFourisseurs/' + id;
     return this.http.delete<Fournisseur>(url);
   }
   
 
-  UpdateFournisseur (fournisseur: Fournisseur): Observable<Fournisseur> {
+  UpdateFournisseur (Fournisseur: Fournisseur): Observable<Fournisseur> {
     
-    const url = 'http://localhost:9595/SpringMVC/servlet/updateFournisseur';
-    return this.http.put<Fournisseur>(url,fournisseur,this.httpOptions);
+    
+    return this.http.put<Fournisseur>('http://localhost:9595/SpringMVC/servlet/updateFournisseur',Fournisseur);
   }
 
   RechercheByCat(categorieProduit : String ): Observable<Fournisseur[]> {

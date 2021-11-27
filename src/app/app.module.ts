@@ -27,7 +27,10 @@ import { AccordionModule } from 'primeng/accordion';
 import { MenuModule } from 'primeng/menu';
 import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
-
+import { CustomersFormComponent } from './components/main-customers/customers-form/customers-form.component';
+import { UpdateFormComponent } from './components/main-customers/update-form/update-form.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { ListCustomersComponent } from './components/main-customers/list-customers/list-customers.component';
 
 
 @NgModule({
@@ -47,7 +50,10 @@ import {ButtonModule} from 'primeng/button';
     InvoiceFilterComponent,
     InvoiceFormComponent,
     InvoiceDetailFormComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    CustomersFormComponent,
+    UpdateFormComponent,
+    ListCustomersComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +64,7 @@ import {ButtonModule} from 'primeng/button';
     TableModule,
     ButtonModule,
     AccordionModule,
+    NgxPaginationModule,
     MenuModule,
     NgbModule,
     IonicModule.forRoot(),

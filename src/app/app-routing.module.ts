@@ -11,12 +11,18 @@ import { MainInvoicesComponent } from './components/main-invoices/main-invoices.
 import { ListInvoiceComponent } from './components/main-invoices/list-invoice/list-invoice.component';
 import { InvoiceFilterComponent } from './components/main-invoices/invoice-filter/invoice-filter.component';
 import { InvoiceFormComponent } from './components/main-invoices/invoice-form/invoice-form.component';
-
+import { CustomersFormComponent } from './components/main-customers/customers-form/customers-form.component';
+import { UpdateFormComponent } from './components/main-customers/update-form/update-form.component';
+import { ListCustomersComponent } from './components/main-customers/list-customers/list-customers.component';
 
 const routes: Routes = [
   {path: '', component: MainPageComponent, children: [
     {path: 'dashboard', component: DashboardComponent},
-    {path: 'customers', component: MainCustomersComponent},
+    {path: 'customers', component: MainCustomersComponent, children: [
+      {path: '', component: ListCustomersComponent},
+      {path: 'addcustomer', component: CustomersFormComponent},
+      {path: 'updatecustomer/:id"', component: UpdateFormComponent}
+    ]},
     {path: 'products', component: MainProductsComponent},
     {path: 'stock', component: MainStockComponent},
     {path: 'shop', component: MainShopComponent},

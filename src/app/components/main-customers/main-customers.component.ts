@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-main-customers',
   templateUrl: './main-customers.component.html',
@@ -10,6 +11,6 @@ export class MainCustomersComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  }
 
+  }
 }

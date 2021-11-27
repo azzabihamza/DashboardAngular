@@ -20,6 +20,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { InvoiceFilterComponent } from './components/main-invoices/invoice-filter/invoice-filter.component';
 import { InvoiceFormComponent } from './components/main-invoices/invoice-form/invoice-form.component';
 import { InvoiceDetailFormComponent } from './components/main-invoices/invoice-detail-form/invoice-detail-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BreadcrumbComponent } from './components/main-invoices/breadcrumb/breadcrumb.component';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { AccordionModule } from 'primeng/accordion';
+import { MenuModule } from 'primeng/menu';
+import {TableModule} from 'primeng/table';
+import {ButtonModule} from 'primeng/button';
+
+
 
 @NgModule({
   declarations: [
@@ -37,12 +46,20 @@ import { InvoiceDetailFormComponent } from './components/main-invoices/invoice-d
     ListInvoiceComponent,
     InvoiceFilterComponent,
     InvoiceFormComponent,
-    InvoiceDetailFormComponent
+    InvoiceDetailFormComponent,
+    BreadcrumbComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    BreadcrumbModule,
+    TableModule,
+    ButtonModule,
+    AccordionModule,
+    MenuModule,
+    NgbModule,
     IonicModule.forRoot(),
     NgbModule
   ],

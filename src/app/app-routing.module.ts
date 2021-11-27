@@ -8,6 +8,10 @@ import { MainShopComponent } from './components/main-shop/main-shop.component';
 import { MainStockComponent } from './components/main-stock/main-stock.component';
 import { MainProvidersComponent } from './components/main-providers/main-providers.component';
 import { MainInvoicesComponent } from './components/main-invoices/main-invoices.component';
+import { ListInvoiceComponent } from './components/main-invoices/list-invoice/list-invoice.component';
+import { InvoiceFilterComponent } from './components/main-invoices/invoice-filter/invoice-filter.component';
+import { InvoiceFormComponent } from './components/main-invoices/invoice-form/invoice-form.component';
+
 
 const routes: Routes = [
   {path: '', component: MainPageComponent, children: [
@@ -17,7 +21,10 @@ const routes: Routes = [
     {path: 'stock', component: MainStockComponent},
     {path: 'shop', component: MainShopComponent},
     {path: 'providers', component: MainProvidersComponent},
-    {path: 'invoices', component: MainInvoicesComponent},
+    {path: 'invoices', component: MainInvoicesComponent, children: [
+      {path: '', component: ListInvoiceComponent},
+      {path: 'addInvoice', component: InvoiceFormComponent},
+    ]},
     {path: '', redirectTo: 'dashboard', pathMatch: 'full'}
   ]},
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'}

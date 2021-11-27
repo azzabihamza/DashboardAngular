@@ -9,14 +9,14 @@
         </ul>
       </div>
       <div class="col-auto float-right ml-auto">
-        <a class="btn btn-primary me-1 header-btn"><ion-icon name="add-outline"></ion-icon></a>
+        <a class="btn btn-primary me-1 header-btn" routerLink="addInvoice" ><ion-icon name="add-outline"></ion-icon></a>
         <a class="btn btn-primary me-1 header-btn"><ion-icon name="filter-outline"></ion-icon></a>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-12">
-      <app-list-invoice></app-list-invoice>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

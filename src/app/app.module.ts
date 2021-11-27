@@ -31,6 +31,8 @@ import { CustomersFormComponent } from './components/main-customers/customers-fo
 import { UpdateFormComponent } from './components/main-customers/update-form/update-form.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ListCustomersComponent } from './components/main-customers/list-customers/list-customers.component';
+import { ListProductComponent } from './components/main-products/list-product/list-product.component';
+import { ProductFormComponent } from './components/main-products/product-form/product-form.component';
 
 
 @NgModule({
@@ -53,7 +55,9 @@ import { ListCustomersComponent } from './components/main-customers/list-custome
     BreadcrumbComponent,
     CustomersFormComponent,
     UpdateFormComponent,
-    ListCustomersComponent
+    ListCustomersComponent,
+    ListProductComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,

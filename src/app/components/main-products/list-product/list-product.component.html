@@ -1,0 +1,46 @@
+<div class="card card-table">
+  <div class="card-body">
+    <div class="table-responsive">
+      <div class="dataTables_wrapper no-footer">
+        <div class="dataTables_length">
+          <label>Show
+            <select class="" data-show="10,25,50,100" name="DataTables_Table_length">
+              <option value="10">10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
+            entries
+          </label>
+        </div>
+        <table class="table table-stripped table-hover datatable dataTable no-footer">
+          <thead class="thead-light">
+            <tr>
+              <th>Product No</th>
+              <th>Code Product</th>
+              <th>Name Product</th>
+              <th>Price</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let produit of produits">
+              <td>{{produit.idProduit}}</td>
+              <td>{{produit.codeProduit}}</td>
+              <td>{{produit.libelleProduit}}</td>
+              <td>{{produit.prixUnitaire}}</td>
+              <td>
+                <a class="btn btn-primary btn-sm" >
+                  <i class="fa fa-edit"></i>
+                </a>
+                <a class="btn btn-danger btn-sm" >
+                  <i class="fa fa-trash"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

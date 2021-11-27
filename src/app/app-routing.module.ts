@@ -14,6 +14,8 @@ import { InvoiceFormComponent } from './components/main-invoices/invoice-form/in
 import { CustomersFormComponent } from './components/main-customers/customers-form/customers-form.component';
 import { UpdateFormComponent } from './components/main-customers/update-form/update-form.component';
 import { ListCustomersComponent } from './components/main-customers/list-customers/list-customers.component';
+import { ProductFormComponent } from './components/main-products/product-form/product-form.component';
+import { ListProductComponent } from './components/main-products/list-product/list-product.component';
 
 const routes: Routes = [
   {path: '', component: MainPageComponent, children: [
@@ -23,7 +25,10 @@ const routes: Routes = [
       {path: 'addcustomer', component: CustomersFormComponent},
       {path: 'updatecustomer/:id"', component: UpdateFormComponent}
     ]},
-    {path: 'products', component: MainProductsComponent},
+    {path: 'products', component: MainProductsComponent, children: [
+      {path: '', component: ListProductComponent},
+      {path: 'addProduct', component: ProductFormComponent},
+    ]},
     {path: 'stock', component: MainStockComponent},
     {path: 'shop', component: MainShopComponent},
     {path: 'providers', component: MainProvidersComponent},

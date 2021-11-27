@@ -12,7 +12,7 @@ export class ListProductComponent implements OnInit {
 
   produits:Produit[];
 
-  constructor(private ac:ActivatedRoute , private ps:ProduitService,private router: Router) { }
+  constructor(private ac:ActivatedRoute , private ps:ProduitService, private router: Router) { }
 
   ngOnInit(): void {
     this.getProduits();

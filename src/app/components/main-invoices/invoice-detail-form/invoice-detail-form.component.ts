@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { DetailFacture } from 'src/app/models/detailFacture';
 import { Produit } from 'src/app/models/produit';
+import { ProduitService } from 'src/app/services/produit.service';
 
 @Component({
   selector: 'app-invoice-detail-form',
@@ -15,35 +16,13 @@ export class InvoiceDetailFormComponent implements OnInit {
   detailFacture: DetailFacture;
   produits: Produit[];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private produitService: ProduitService) {
     this.columns = ['Items', 'Quantity', 'Discount Amount', 'Discount Price', 'Price','Actions'];
    }
 
   ngOnInit(): void {
     this.createForm();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+    this.getProduits();
   }
 
 /**
@@ -86,6 +65,10 @@ onDeleteRow(rowIndex:number): void {
 }
 
   addDetailInvoice() {
+  }
+
+  getProduits(){
+    this.produitService.findAllProduits().subscribe((p)=>this.produits=p);
   }
 
 }

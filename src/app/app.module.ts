@@ -33,6 +33,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { ListCustomersComponent } from './components/main-customers/list-customers/list-customers.component';
 import { ListProductComponent } from './components/main-products/list-product/list-product.component';
 import { ProductFormComponent } from './components/main-products/product-form/product-form.component';
+import { ListProvidersComponent } from './components/main-providers/list-providers/list-providers.component';
+import { AddProvidersComponent } from './components/main-providers/add-providers/add-providers.component';
+import { EditProvidersComponent } from './components/main-providers/edit-providers/edit-providers.component';
 
 
 @NgModule({
@@ -57,7 +60,10 @@ import { ProductFormComponent } from './components/main-products/product-form/pr
     UpdateFormComponent,
     ListCustomersComponent,
     ListProductComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ListProvidersComponent,
+    AddProvidersComponent,
+    EditProvidersComponent
   ],
   imports: [
     BrowserModule,

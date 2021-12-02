@@ -22,7 +22,8 @@
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 .content{
-
+    
+  height: 100%;
   padding: 1.875rem 1.875rem 0;
 }
 .page-header {

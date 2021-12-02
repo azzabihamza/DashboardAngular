@@ -16,7 +16,7 @@ export class CustomerService {
 
 
   getAllCustomersFromDB():Observable<Client[]>{
-    return this._http.get<Client[]>(this.CustomersUrl+"/retrieve-all-clients");
+    return this._http.get<Client[]>(this.CustomersUrl+"/getAllClients");
   }
 
   deleteCustomer (Customer: Client | number): Observable<Client> {

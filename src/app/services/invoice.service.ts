@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Facture } from '../models/facture';
+import { DetailFacture } from '../models/detailFacture';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,22 @@ export class InvoiceService {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
+
+  createFacture(facture: Facture): Observable<Facture> {
+    return this._http.post<Facture>(this.url + '/addFacture', facture);
+  }
+
+  updateFacture(facture: Facture): Observable<Facture> {
+    return this._http.put<Facture>(this.url + '/updateFacture', facture);
+  }
+
+  deleteFacture(id: number): Observable<Facture> {
+    return this._http.delete<Facture>(this.url + '/deleteFacture/' + id);
+  }
+
+  addDetailFacture(detailFacture: DetailFacture): Observable<DetailFacture> {
+    return this._http.post<DetailFacture>(this.url + '/addDetailFacture', detailFacture);
+  }
+
 }
 

@@ -15,7 +15,7 @@
                   <div class="form-group">
                     <select type="text" class="form-control" formControlName="produit">
                       <option value="">Select an item</option>
-                      <option *ngFor="let produit of produits" [value]="produit">{{produit.libelleProduit}}</option>
+                      <option *ngFor="let produit of produits" [ngValue]="produit">{{produit.libelleProduit}}</option>
                     </select>
                   </div>
                 </td>
@@ -36,11 +36,11 @@
                 </td>
                 <td>
                   <div class="form-group">
-                    <input type="number" class="form-control" formControlName="prix" placeholder="Price" />
+                    <input type="number" class="form-control" formControlName="prix" placeholder="Price" >
                   </div>
                 </td>
                 <td>
-                    <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-outlined pull-left" (click)="addNewRow()"></button>
+                    <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-outlined pull-left" (click)="addNewRow(rowIndex)"></button>
                     <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-outlined pull-right" (click)="onDeleteRow(rowIndex)"></button>
                 </td>
             </tr>
@@ -48,8 +48,12 @@
     </ng-template>
     </p-table>
     <div class="card-footer">
-      <button type="button" class="btn btn-primary btn-sm pull-left" (click)="addNewRow()">Add Row</button>
-      <button type="button" class="btn btn-success btn-sm pull-right" title="Save">Save</button>
+      <span class="float-right">
+        <h3>Total :</h3>
+        <button type="button" class="btn btn-success btn-sm pull-right" title="Save">Save</button>
+      </span>
+
+
    </div>
   </div>
 </form>

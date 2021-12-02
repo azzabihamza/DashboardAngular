@@ -1,0 +1,75 @@
+<div class="row">
+
+  <div id="table" style="width: 70%;">
+      <div class="row" id="deuxDate" style="margin-left: 1%; margin-bottom: 1;">
+
+          <div class="col">
+              1er Date
+              <!--<input type="date" [(ngModel)]="dateDebut" class="form-control" >-->
+
+          </div>
+          <div class="col">
+              2eme Date
+              <!--<input type="date" [(ngModel)]="dateFin" class="form-control">-->
+          </div>
+          <div class="col">
+
+          </div>
+
+
+      </div>
+      <div>
+              <button class="btn btn-info" (click)="rechercheCat('QUINCAILLERIE')" style="margin-left: 20px ; margin-top: 5px ; margin-bottom: 5px;" >QUINCAILLERIE</button>
+              <button class="btn btn-info" (click)="rechercheCat('ALIMENTAIRE')" style="margin-left: 20px ; margin-top: 5px ; margin-bottom: 5px;" >ALIMENTAIRE</button>
+              <button class="btn btn-info" (click)="rechercheCat('ELECTROMENAGER')" style="margin-left: 20px ; margin-top: 5px ; margin-bottom: 5px;" >ELECTROMENAGER</button>
+              <button class="btn btn-info" style="margin-left: 20px ; margin-top: 5px ; margin-bottom: 5px;" (click)="rechercheDate()" >Par Date</button>
+              <button class="btn btn-info" (click)="resetlist()" style="margin-left: 20px ; margin-top: 5px ; margin-bottom: 5px;" >All</button>
+      </div>
+
+
+      <div class="table-wrapper-scroll-y my-custom-scrollbar" >
+          <table class="table table-bordered table-striped sm-0 text-center">
+
+              <thead>
+                  <tr>
+                      <th scope="col">Code de Fournisseur</th>
+                      <th scope="col">Libelle de Fournisseur</th>
+                      <th scope="col">Adresse</th>
+                      <th scope="col">Numéro de téléphone</th>
+                      <th scope="col">Date de creation</th>
+                      <th scope="col">Categorie de produit</th>
+                      <th scope="col">Supprimer</th>
+                      <th scope="col">Update</th>
+                      <th scope="col">Produits</th>
+                  </tr>
+              </thead>
+
+
+              <tbody>
+                  <tr *ngFor="let u of providers ; let i=index ">
+                      <td>{{u.codeFournisseur}}</td>
+                      <td>{{u.libelleFournisseur}}</td>
+                      <td>{{u.adresseFournisseur}}</td>
+                      <td>{{u.numtel}}</td>
+                      <td>{{u.dateCreation}}</td>
+                      <td>{{u.categorieProduit}}</td>
+                      <td><button class="btn btn- btn-danger" (click)="deleteProvider(u.idFournisseur,i)">Supprimer</button></td>
+                      <td><button class="btn btn-secondary" (click)="showEditForm(u)">Update </button> </td>
+                      <td><button class="btn btn-success" (click)="showProduit(u.idFournisseur)">Afficher </button> </td>
+
+                  </tr>
+              </tbody>
+          </table>
+
+
+      </div>
+
+  </div>
+  <div style="width: 30%;" id="form">
+      <app-add-providers  class="table-wrapper-scroll-y my-custom-scrollbar" (ajouterevent)="AddProvider($event)" *ngIf="showAddProvider" ></app-add-providers>
+      <app-edit-providers  class="table-wrapper-scroll-y my-custom-scrollbar" (editProvider)="updateProvider($event)" [prop2]="myProvider" [ProviderToEdit]="myProvider" *ngIf="showEditProvider"></app-edit-providers>
+
+
+  </div>
+
+</div>

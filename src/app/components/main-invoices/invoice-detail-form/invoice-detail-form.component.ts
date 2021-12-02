@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { DetailFacture } from 'src/app/models/detailFacture';
 import { Produit } from 'src/app/models/produit';
@@ -15,6 +15,10 @@ export class InvoiceDetailFormComponent implements OnInit {
   columns:string[];
   detailFacture: DetailFacture;
   produits: Produit[];
+  produit: Produit;
+  detailFactures: DetailFacture[] = [];
+
+  @Output() addDetailInvoiceEvent = new EventEmitter<DetailFacture[]>();
 
   constructor(private formBuilder: FormBuilder, private produitService: ProduitService) {
     this.columns = ['Items', 'Quantity', 'Discount Amount', 'Discount Price', 'Price','Actions'];
@@ -23,6 +27,7 @@ export class InvoiceDetailFormComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
     this.getProduits();
+    console.log(this.tableRowArray);
   }
 
 /**
@@ -42,33 +47,57 @@ export class InvoiceDetailFormComponent implements OnInit {
  */
  private createTableRow(): FormGroup {
   return this.formBuilder.group({
-    produit: new FormControl(''),
-    quantite: new FormControl(''),
-    prix: new FormControl(''),
-    Remise: new FormControl(''),
-    montantRemise: new FormControl(''),
-    total: new FormControl('')
+    produit: new FormControl('', Validators.required),
+    quantite: new FormControl('', Validators.required),
+    prix: new FormControl('', Validators.required),
+    Remise: new FormControl('', Validators.required),
+    montantRemise: new FormControl('', Validators.required),
+    total: new FormControl('', Validators.required)
   });
 }
+
+
 
 get tableRowArray(): FormArray {
   return this.detailInvoiceFrom.get('tableRowArray') as FormArray;
 }
 
-addNewRow(): void {
+addNewRow(index: number): void {
+  this.getDetailFactureRow(index);
   this.tableRowArray.push(this.createTableRow());
-  console.log(this.tableRowArray);
+  console.log();
 }
 
 onDeleteRow(rowIndex:number): void {
   this.tableRowArray.removeAt(rowIndex);
 }
 
+calculatePrice(){
+
+}
+
+getDetailFactureRow(index : number){
+  this.detailFacture = new DetailFacture();
+  this.detailFacture.produit = this.tableRowArray.value[index].produit;
+  this.detailFacture.qte = this.detailInvoiceFrom.value.tableRowArray[index].quantite;
+  this.detailFacture.prixTotal = this.detailFacture.qte * this.detailFacture.produit.prixUnitaire;
+  this.detailFacture.pourcentageRemise = this.detailInvoiceFrom.value.tableRowArray[index].Remise;
+  this.detailFacture.montantRemise = this.detailFacture.prixTotal * (this.detailFacture.pourcentageRemise / 100);
+  this.detailFactures.push(this.detailFacture);
+  this.passDetailFactures();
+  }
+
+
+
   addDetailInvoice() {
   }
 
   getProduits(){
     this.produitService.findAllProduits().subscribe((p)=>this.produits=p);
+  }
+
+  passDetailFactures(){
+    this.addDetailInvoiceEvent.emit(this.detailFactures);
   }
 
 }

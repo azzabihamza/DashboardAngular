@@ -4,6 +4,7 @@ import { Client } from 'src/app/models/client';
 import { DetailFacture } from 'src/app/models/detailFacture';
 import { Facture } from 'src/app/models/facture';
 import { Produit } from 'src/app/models/produit';
+import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-invoice-form',
@@ -14,17 +15,19 @@ export class InvoiceFormComponent implements OnInit {
 
   invoiceForm: FormGroup ;
   detailInvoiceForm: FormGroup;
-  detailFacture: DetailFacture;
+  detailFactures: DetailFacture[] = [];
   produits: Produit[];
 
-  clients!: Client[];
-  facture!: Facture;
+  clients: Client[];
+  facture: Facture;
+  totalFacture: number;
 
-  constructor() { }
+  constructor(private customerService: CustomerService) { }
 
   ngOnInit(): void {
     this.intializeForm();
     this.initializeDetailInvoiceForm();
+    this.getCustomers();
   }
 
   intializeForm() {
@@ -50,5 +53,22 @@ export class InvoiceFormComponent implements OnInit {
   addDetailInvoice() {
   }
 
+  getCustomers(){
+    this.customerService.getAllCustomersFromDB().subscribe(clients => this.clients = clients);
+  }
+
+  getDetailFactures(detailFactures: DetailFacture[]) {
+    this.detailFactures = detailFactures;
+    this.totalFacture = this.calculerTotal();
+    console.log(this.detailFactures);
+  }
+
+  calculerTotal(): number {
+    let total = 0;
+    this.detailFactures.forEach(detailFacture => {
+      total += detailFacture.prixTotal;
+    });
+    return total;
+  }
 
 }

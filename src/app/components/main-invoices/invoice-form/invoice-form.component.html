@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card ">
 	<div class="card-body">
 		<form [formGroup]="invoiceForm">
 			<div class="row">
@@ -6,81 +6,20 @@
 					<label for="customer">Customer</label>
 					<select class="form-control" id="customer" formcontrolname="client">
 						<option value="">Select a customer</option>
-						<option *ngFor="let client of clients" [value]="client.idClient">{{client.nom}}</option>
+						<option *ngFor="let client of clients" [value]="client.idClient">{{client.nom}} {{client.prenom}}</option>
 					</select>
 				</div>
         <div class="col-md-4 form-group">
           <label for="total">Total</label>
-          <input type="text" class="form-control" id="total" formcontrolname="montantFacture">
+          <input type="text" class="form-control" id="total" formcontrolname="montantFacture" [disabled]="true" [value]="totalFacture">
         </div>
+          <app-invoice-detail-form class="table-wrapper-scroll-y my-custom-scrollbar" (addDetailInvoiceEvent)="getDetailFactures($event)"></app-invoice-detail-form>
+
 			</div>
-      <div class="row">
-        <app-invoice-detail-form></app-invoice-detail-form>
-      </div>
+
+
+
 			<button type="submit" class="btn btn-primary" [disabled]="!invoiceForm.valid">Submit</button>
 		</form>
-		<!--
-						<div class="col-md-4 form-group">
-							<label for="total">Total</label>
-							<input type="number" class="form-control" id="total" formcontrolname="montantFacture">
-						</div>
-					</div>
-					<div class="row">
-		        <div class="table-responsive mt-4">
-		          <table class="table table-center table-hover">
-		            <thead>
-		              <tr>
-		                <th>Item</th>
-		                <th>Quantity</th>
-		                <th>Price</th>
-		                <th>Discount Amount</th>
-		                <th>Discount Price</th>
-		                <th>Actions</th>
-		              </tr>
-		            </thead>
-		              <tbody>
-
-		                <tr FormGroup="detailInvoiceForm">
-		                  <td>
-		                    <div class="form-group">
-		                      <select type="text" class="form-control" formControlName="produit">
-		                        <option value="">Select an item</option>
-		                        <option *ngFor="let produit of produits" [value]="produit">{{produit.libelleProduit}}</option>
-		                      </select>
-		                    </div>
-		                  </td>
-		                  <td>
-		                    <div class="form-group">
-		                      <input type="number" class="form-control" formControlName="quantite" placeholder="Quantity" />
-		                    </div>
-		                  </td>
-		                  <td>
-		                    <div class="form-group">
-		                      <input type="number" class="form-control" formControlName="prix" placeholder="Price" />
-		                    </div>
-		                  </td>
-		                  <td>
-		                    <div class="form-group">
-		                      <input type="number" class="form-control" formControlName="remise" placeholder="Discount Amount" />
-		                    </div>
-		                  </td>
-		                  <td>
-		                    <div class="form-group">
-		                      <input type="number" class="form-control" formControlName="montantRemise" placeholder="Discount Price" />
-		                    </div>
-		                  </td>
-		                  <td>
-		                    <button type="submit" class="btn btn-primary" (click)="addDetailInvoice()">Add</button>
-		                  </td>
-		                </tr>
-
-		              </tbody>
-
-
-		          </table>
-		        </div>
-
-
-		    -->
-	</div>
+  </div>
 </div>

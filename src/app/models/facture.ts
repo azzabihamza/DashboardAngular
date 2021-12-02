@@ -10,3 +10,5 @@ export class Facture {
   client !: Client;
   detailFacture !: Array<DetailFacture>;
 }
+
+

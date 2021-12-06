@@ -22,7 +22,7 @@
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 .content{
-    
+
   height: 100%;
   padding: 1.875rem 1.875rem 0;
 }
@@ -62,3 +62,13 @@
 .header-btn a ion-icon{
   font-size: 60px;
 }
+.my-custom-scrollbar {
+
+  height: 60%;
+  overflow: auto;
+  width: 100%;
+
+  }
+  .table-wrapper-scroll-y {
+  display: block;
+  }

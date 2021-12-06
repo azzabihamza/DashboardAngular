@@ -1,16 +1,24 @@
 /******** Main page  ***********/
 .main
 {
-    position: absolute;
+    position: relative;
     width: calc(100% - 300px);
     left: 300px;
     min-height: 100vh;
     background: var(--white);
     transition: 0.5s;
-    overflow-y: scroll;
+
 }
 .main.active
 {
     width: calc(100% - 80px);
     left: 80px;
+}
+.my-custom-scrollbar {
+
+  height: 60%;
+  overflow: auto;
+}
+.table-wrapper-scroll-y {
+  display: block;
 }

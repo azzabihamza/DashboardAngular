@@ -16,6 +16,7 @@ import { UpdateFormComponent } from './components/main-customers/update-form/upd
 import { ListCustomersComponent } from './components/main-customers/list-customers/list-customers.component';
 import { ProductFormComponent } from './components/main-products/product-form/product-form.component';
 import { ListProductComponent } from './components/main-products/list-product/list-product.component';
+import { InvoiceComponent } from './components/main-invoices/invoice/invoice.component';
 
 const routes: Routes = [
   {path: '', component: MainPageComponent, children: [
@@ -35,6 +36,7 @@ const routes: Routes = [
     {path: 'invoices', component: MainInvoicesComponent, children: [
       {path: '', component: ListInvoiceComponent},
       {path: 'addInvoice', component: InvoiceFormComponent},
+      {path: 'showInvoice/:id', component: InvoiceComponent}
     ]},
     {path: '', redirectTo: 'dashboard', pathMatch: 'full'}
   ]},

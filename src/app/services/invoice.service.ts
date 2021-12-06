@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Facture } from '../models/facture';
 import { DetailFacture } from '../models/detailFacture';
+import { ResponseJson } from '../models/ResponseJson';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +27,9 @@ export class InvoiceService {
     return Promise.reject(error.message || error);
   }
 
-  createFacture(facture: Facture): Observable<Facture> {
-    return this._http.post<Facture>(this.url + '/addFacture', facture);
+  createFacture(facture: Facture): Observable<ResponseJson> {
+    return this._http.post<ResponseJson>(this.url + '/addFacture', facture);
+
   }
 
   updateFacture(facture: Facture): Observable<Facture> {
@@ -40,6 +42,14 @@ export class InvoiceService {
 
   addDetailFacture(detailFacture: DetailFacture): Observable<DetailFacture> {
     return this._http.post<DetailFacture>(this.url + '/addDetailFacture', detailFacture);
+  }
+
+  findAllDetailFactures(idFacture: number): Observable<DetailFacture[]> {
+    return this._http.get<DetailFacture[]>(this.url + '/getDetailFactureByFacture/' + idFacture);
+  }
+
+  updateFactureStatus(facture: Facture): Observable<Facture> {
+    return this._http.put<Facture>(this.url + '/changeStatus', facture);
   }
 
 }

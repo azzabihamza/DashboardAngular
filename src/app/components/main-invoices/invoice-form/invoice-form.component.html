@@ -4,7 +4,7 @@
 			<div class="row">
 				<div class="col-md-4 form-group">
 					<label for="customer">Customer</label>
-					<select class="form-control" id="customer" formcontrolname="client">
+					<select class="form-control" id="customer" formcontrolname="client" (change)="onChangeSelectClient($event)">
 						<option value="">Select a customer</option>
 						<option *ngFor="let client of clients" [value]="client.idClient">{{client.nom}} {{client.prenom}}</option>
 					</select>
@@ -19,7 +19,7 @@
 
 
 
-			<button type="submit" class="btn btn-primary" [disabled]="!invoiceForm.valid">Submit</button>
+			<button type="submit" class="btn btn-primary" [disabled]="!invoiceForm.valid" (click)="submiteInvoice()">Submit</button>
 		</form>
   </div>
 </div>

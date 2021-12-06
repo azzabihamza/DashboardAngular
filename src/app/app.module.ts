@@ -36,6 +36,7 @@ import { ProductFormComponent } from './components/main-products/product-form/pr
 import { ListProvidersComponent } from './components/main-providers/list-providers/list-providers.component';
 import { AddProvidersComponent } from './components/main-providers/add-providers/add-providers.component';
 import { EditProvidersComponent } from './components/main-providers/edit-providers/edit-providers.component';
+import { InvoiceComponent } from './components/main-invoices/invoice/invoice.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { EditProvidersComponent } from './components/main-providers/edit-provide
     ProductFormComponent,
     ListProvidersComponent,
     AddProvidersComponent,
-    EditProvidersComponent
+    EditProvidersComponent,
+    InvoiceComponent
   ],
   imports: [
     BrowserModule,

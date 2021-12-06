@@ -13,7 +13,7 @@
             entries
           </label>
         </div>
-        <table class="table table-stripped table-hover datatable dataTable no-footer">
+        <table class="table table-stripped table-hover datatable dataTable no-footer table-wrapper-scroll-y my-custom-scrollbar">
           <thead class="thead-light">
             <tr>
               <th class="sorting_asc" tabindex="0" rowspan="1" colspan="1" style="width: 139.8px;" aria-label="Invoice Number: activate to sort column descending" aria-sort="ascending">Invoice No</th>
@@ -25,18 +25,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let invoice of invoices">
+            <tr *ngFor="let invoice of invoices ; let i=index">
               <td>{{invoice.idFacture}}</td>
               <td>{{invoice.client.nom}} {{invoice.client.prenom}}</td>
               <td>{{invoice.dateFacture}}</td>
               <td>{{invoice.montantFacture}}</td>
               <td>{{invoice.active}}</td>
               <td>
-                <a class="btn btn-primary btn-sm" >
-                  <i class="fa fa-edit"></i>
+                <a class="btn btn-primary btn-sm" [routerLink]="['showInvoice',invoice.idFacture ]">
+                  Show
                 </a>
-                <a class="btn btn-danger btn-sm" >
-                  <i class="fa fa-trash"></i>
+                <a class="btn btn-danger btn-sm" (click)="deleteInvoice(invoice.idFacture,i)">
+                  Delete
                 </a>
               </td>
             </tr>

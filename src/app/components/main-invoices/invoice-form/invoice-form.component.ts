@@ -5,6 +5,7 @@ import { DetailFacture } from 'src/app/models/detailFacture';
 import { Facture } from 'src/app/models/facture';
 import { Produit } from 'src/app/models/produit';
 import { CustomerService } from 'src/app/services/customer.service';
+import { InvoiceService } from 'src/app/services/invoice.service';
 
 @Component({
   selector: 'app-invoice-form',
@@ -19,10 +20,12 @@ export class InvoiceFormComponent implements OnInit {
   produits: Produit[];
 
   clients: Client[];
+  client: Client;
   facture: Facture;
   totalFacture: number;
+  montantRemise=0;
 
-  constructor(private customerService: CustomerService) { }
+  constructor(private customerService: CustomerService,private invoiceService: InvoiceService) { }
 
   ngOnInit(): void {
     this.intializeForm();
@@ -50,8 +53,6 @@ export class InvoiceFormComponent implements OnInit {
     });
   }
 
-  addDetailInvoice() {
-  }
 
   getCustomers(){
     this.customerService.getAllCustomersFromDB().subscribe(clients => this.clients = clients);
@@ -67,8 +68,40 @@ export class InvoiceFormComponent implements OnInit {
     let total = 0;
     this.detailFactures.forEach(detailFacture => {
       total += detailFacture.prixTotal;
+      this.montantRemise += detailFacture.montantRemise;
     });
     return total;
+  }
+
+  addDetailFactureToDb(detailFacture: DetailFacture) {
+    this.invoiceService.addDetailFacture(detailFacture).subscribe(detailFacture => {
+      console.log(detailFacture);
+    });
+  }
+
+
+
+  submiteInvoice() {
+    this.facture = new Facture();
+    this.facture.client = this.client;
+    this.facture.montantFacture = this.totalFacture;
+    this.facture.montantRemise = this.montantRemise;
+    this.facture.detailFacture = this.detailFactures;
+    this.invoiceService.createFacture(this.facture).subscribe(factureResponse => {
+      console.log(factureResponse);
+      this.detailFactures.forEach(detailFacture => {
+        detailFacture.facture = factureResponse.data;
+        console.log(detailFacture);
+        this.addDetailFactureToDb(detailFacture);
+      });
+    });
+
+  }
+
+  onChangeSelectClient(event: any) {
+    let id = event.target.value;
+    this.client = this.clients.find(client => client.idClient == id);
+    console.log(this.client);
   }
 
 }

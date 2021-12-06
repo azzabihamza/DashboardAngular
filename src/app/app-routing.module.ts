@@ -17,6 +17,8 @@ import { ListCustomersComponent } from './components/main-customers/list-custome
 import { ProductFormComponent } from './components/main-products/product-form/product-form.component';
 import { ListProductComponent } from './components/main-products/list-product/list-product.component';
 import { InvoiceComponent } from './components/main-invoices/invoice/invoice.component';
+import { ListRayonComponent } from './components/main-shop/list-rayon/list-rayon.component';
+import { AddRayonComponent } from './components/main-shop/add-rayon/add-rayon.component';
 
 const routes: Routes = [
   {path: '', component: MainPageComponent, children: [
@@ -31,7 +33,10 @@ const routes: Routes = [
       {path: 'addProduct', component: ProductFormComponent},
     ]},
     {path: 'stock', component: MainStockComponent},
-    {path: 'shop', component: MainShopComponent},
+    {path: 'shop', component: MainShopComponent, children: [
+      {path: '', component: ListRayonComponent},
+      {path: 'addRayon', component: AddRayonComponent},
+    ]},
     {path: 'providers', component: MainProvidersComponent},
     {path: 'invoices', component: MainInvoicesComponent, children: [
       {path: '', component: ListInvoiceComponent},

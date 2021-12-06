@@ -37,6 +37,8 @@ import { ListProvidersComponent } from './components/main-providers/list-provide
 import { AddProvidersComponent } from './components/main-providers/add-providers/add-providers.component';
 import { EditProvidersComponent } from './components/main-providers/edit-providers/edit-providers.component';
 import { InvoiceComponent } from './components/main-invoices/invoice/invoice.component';
+import { ListRayonComponent } from './components/main-shop/list-rayon/list-rayon.component';
+import { AddRayonComponent } from './components/main-shop/add-rayon/add-rayon.component';
 
 
 @NgModule({
@@ -65,7 +67,9 @@ import { InvoiceComponent } from './components/main-invoices/invoice/invoice.com
     ListProvidersComponent,
     AddProvidersComponent,
     EditProvidersComponent,
-    InvoiceComponent
+    InvoiceComponent,
+    ListRayonComponent,
+    AddRayonComponent
   ],
   imports: [
     BrowserModule,

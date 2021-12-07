@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Client } from 'src/app/models/client';
 import { DetailFacture } from 'src/app/models/detailFacture';
 import { Facture } from 'src/app/models/facture';
@@ -18,7 +18,7 @@ export class InvoiceFormComponent implements OnInit {
   detailInvoiceForm: FormGroup;
   detailFactures: DetailFacture[] = [];
   produits: Produit[];
-
+  alert:boolean = false;
   clients: Client[];
   client: Client;
   facture: Facture;
@@ -35,7 +35,7 @@ export class InvoiceFormComponent implements OnInit {
 
   intializeForm() {
     this.invoiceForm = new FormGroup({
-      client: new FormControl(''),
+      client: new FormControl('',[Validators.required]),
       montantFacture: new FormControl(''),
       montantRemise: new FormControl(''),
       detailFacture: new FormControl('')
@@ -95,13 +95,22 @@ export class InvoiceFormComponent implements OnInit {
         this.addDetailFactureToDb(detailFacture);
       });
     });
+    this.alert = true;
+    this.invoiceForm.reset();
+  }
 
+  getClient(){
+    return this.invoiceForm.get('client');
   }
 
   onChangeSelectClient(event: any) {
     let id = event.target.value;
     this.client = this.clients.find(client => client.idClient == id);
     console.log(this.client);
+  }
+
+  closeAlert() {
+    this.alert = false;
   }
 
 }

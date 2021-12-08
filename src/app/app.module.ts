@@ -42,6 +42,7 @@ import { AddRayonComponent } from './components/main-shop/add-rayon/add-rayon.co
 import { EditRayonComponent } from './components/main-shop/edit-rayon/edit-rayon.component';
 import { ConfirmDialogModule } from './components/shared/confirm-dialog/confirm-dialog.module';
 
+import { NgxPrintModule } from 'ngx-print';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,7 @@ import { ConfirmDialogModule } from './components/shared/confirm-dialog/confirm-
     InvoiceComponent,
     ListRayonComponent,
     AddRayonComponent,
-    EditRayonComponent
+    EditRayonComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,7 +89,8 @@ import { ConfirmDialogModule } from './components/shared/confirm-dialog/confirm-
     MenuModule,
     NgbModule,
     IonicModule.forRoot(),
-    NgbModule
+    NgbModule,
+    NgxPrintModule
   ],
   providers: [],
   bootstrap: [AppComponent]

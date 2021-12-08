@@ -20,6 +20,7 @@ import { InvoiceComponent } from './components/main-invoices/invoice/invoice.com
 import { ListRayonComponent } from './components/main-shop/list-rayon/list-rayon.component';
 import { AddRayonComponent } from './components/main-shop/add-rayon/add-rayon.component';
 
+
 const routes: Routes = [
   {path: '', component: MainPageComponent, children: [
     {path: 'dashboard', component: DashboardComponent},

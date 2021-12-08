@@ -26,6 +26,7 @@
     "ionicons": "^6.0.0",
     "ngx-page-scroll-core": "^7.0.6",
     "ngx-pagination": "^5.1.1",
+    "ngx-print": "^1.2.1",
     "primeicons": "^5.0.0",
     "primeng": "^13.0.0-rc.2",
     "rxjs": "~6.6.0",

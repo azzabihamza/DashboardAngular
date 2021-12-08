@@ -12,19 +12,25 @@
 
 		<div class="page-tools">
 			<div class="action-buttons">
-				<a class="btn bg-white btn-light mx-1px text-95" href="#" data-title="Print">
-					<i class="mr-1 fa fa-print text-primary-m1 text-120 w-2"></i>
-					Print
-				</a>
-				<a class="btn bg-white btn-light mx-1px text-95" href="#" data-title="PDF">
+				<button
+          class="btn bg-white btn-light mx-1px text-95"
+          printTitle="Invoice #{{ invoice.idFacture }}"
+          printSectionId="invoiceToPrint"
+          styleSheetFile="./assets/css/print.css"
+          ngxPrint
+        >
+            <i class="mr-1 fa fa-print text-primary-m1 text-120 w-2"></i>
+            Print
+        </button>
+				<!--<a class="btn bg-white btn-light mx-1px text-95" href="#" data-title="PDF">
 					<i class="mr-1 fa fa-file-pdf-o text-danger-m1 text-120 w-2"></i>
 					Export
-				</a>
+				</a>-->
 			</div>
 		</div>
 	</div>
 
-	<div class="container px-0">
+	<div class="container px-0" id="invoiceToPrint">
 		<div class="row mt-4">
 			<div
 				class="col-12 col-lg-10 offset-lg-1">
@@ -170,3 +176,4 @@
 		</div>
 	</div>
 </div>
+

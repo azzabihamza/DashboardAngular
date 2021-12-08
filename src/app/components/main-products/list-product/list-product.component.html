@@ -24,17 +24,17 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let produit of produits">
+            <tr *ngFor="let produit of produits; let i=index">
               <td>{{produit.idProduit}}</td>
               <td>{{produit.codeProduit}}</td>
               <td>{{produit.libelleProduit}}</td>
               <td>{{produit.prixUnitaire}}</td>
               <td>
-                <a class="btn btn-primary btn-sm" >
-                  <i class="fa fa-edit"></i>
+                <a class="btn btn-primary btn-sm" [routerLink]="['detailProduit',produit.idProduit ]">
+                  Show
                 </a>
-                <a class="btn btn-danger btn-sm" >
-                  <i class="fa fa-trash"></i>
+                <a class="btn btn-danger btn-sm" (click)="open(content,produit.idProduit,i)">
+                  Delete
                 </a>
               </td>
             </tr>
@@ -44,3 +44,18 @@
     </div>
   </div>
 </div>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">×</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      <p>Are you sure to delete this?</p>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="d('Cross click')">Cancel</button>
+      <button type="button" class="btn btn-outline-dark" (click)="c('yes')">Yes</button>
+  </div>
+</ng-template>

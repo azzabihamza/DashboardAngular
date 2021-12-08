@@ -12,6 +12,6 @@ export class Produit {
   stock: Stock;
   rayon: Rayon;
   fournisseurs: Fournisseur[];
-  detailProduit: DetailProduit;
+  detailProduitEntity: DetailProduit;
   detailFactures: DetailFacture[];
 }

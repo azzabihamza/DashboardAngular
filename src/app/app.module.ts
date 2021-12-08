@@ -39,8 +39,8 @@ import { EditProvidersComponent } from './components/main-providers/edit-provide
 import { InvoiceComponent } from './components/main-invoices/invoice/invoice.component';
 import { ListRayonComponent } from './components/main-shop/list-rayon/list-rayon.component';
 import { AddRayonComponent } from './components/main-shop/add-rayon/add-rayon.component';
-
 import { EditRayonComponent } from './components/main-shop/edit-rayon/edit-rayon.component';
+import { ConfirmDialogModule } from './components/shared/confirm-dialog/confirm-dialog.module';
 
 
 @NgModule({
@@ -80,6 +80,7 @@ import { EditRayonComponent } from './components/main-shop/edit-rayon/edit-rayon
     HttpClientModule,
     ReactiveFormsModule,
     BreadcrumbModule,
+    ConfirmDialogModule,
     TableModule,
     ButtonModule,
     AccordionModule,

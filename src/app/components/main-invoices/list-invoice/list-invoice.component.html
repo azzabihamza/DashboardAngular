@@ -1,5 +1,6 @@
 <div class="card card-table">
   <div class="card-body">
+
     <div class="table-responsive">
       <div class="dataTables_wrapper no-footer">
         <div class="dataTables_length">
@@ -35,7 +36,7 @@
                 <a class="btn btn-primary btn-sm" [routerLink]="['showInvoice',invoice.idFacture ]">
                   Show
                 </a>
-                <a class="btn btn-danger btn-sm" (click)="deleteInvoice(invoice.idFacture,i)">
+                <a class="btn btn-danger btn-sm" (click)="open(content,invoice.idFacture,i)">
                   Delete
                 </a>
               </td>
@@ -46,3 +47,18 @@
     </div>
   </div>
 </div>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">×</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      <p>Are you sure to delete this?</p>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="d('Cross click')">Cancel</button>
+      <button type="button" class="btn btn-outline-dark" (click)="c('yes')">Yes</button>
+  </div>
+</ng-template>

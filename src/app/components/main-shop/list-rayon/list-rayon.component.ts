@@ -21,4 +21,9 @@ export class ListRayonComponent implements OnInit {
     this.rayonService.getAllRayon().subscribe((rayons) => this.rayons = rayons);
   }
 
+  deleteRayon(idRayon: number,index:number){
+    this.rayons.splice(index, 1);
+    this.rayonService.deleteRayon(idRayon).subscribe(()=>{},(error)=>{console.log(error)} );
+  }
+
 }

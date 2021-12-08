@@ -40,6 +40,8 @@ import { InvoiceComponent } from './components/main-invoices/invoice/invoice.com
 import { ListRayonComponent } from './components/main-shop/list-rayon/list-rayon.component';
 import { AddRayonComponent } from './components/main-shop/add-rayon/add-rayon.component';
 
+import { EditRayonComponent } from './components/main-shop/edit-rayon/edit-rayon.component';
+
 
 @NgModule({
   declarations: [
@@ -69,7 +71,8 @@ import { AddRayonComponent } from './components/main-shop/add-rayon/add-rayon.co
     EditProvidersComponent,
     InvoiceComponent,
     ListRayonComponent,
-    AddRayonComponent
+    AddRayonComponent,
+    EditRayonComponent
   ],
   imports: [
     BrowserModule,

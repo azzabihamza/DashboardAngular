@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DetailProduit } from '../models/detailProduit';
+import { Fournisseur } from '../models/fournisseur';
 import { Produit } from '../models/produit';
 import { ResponseJson } from '../models/ResponseJson';
 
@@ -38,6 +39,14 @@ export class ProduitService {
 
   addDetail(detailProduit: DetailProduit): Observable<ResponseJson> {
     return this._http.post<ResponseJson>(this.url + '/addDetailProduit', detailProduit, this.httpOptions);
+  }
+  
+  FournisseurByProduit(id:number) : Observable<Fournisseur[]> {
+    return this._http.get<Fournisseur[]>(this.url+'/getFournisseurProduit/'+id);
+  }
+
+  FournisseurToProduit(idFournisseur : number , idProduit : number): Observable<Produit> {
+    return this._http.put<Produit>(this.url+'/assignFournisseurToProduit/' + idFournisseur+ '/'+idProduit, Produit, this.httpOptions);
   }
 
 

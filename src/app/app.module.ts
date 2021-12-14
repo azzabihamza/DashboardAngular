@@ -41,7 +41,7 @@ import { ListRayonComponent } from './components/main-shop/list-rayon/list-rayon
 import { AddRayonComponent } from './components/main-shop/add-rayon/add-rayon.component';
 import { EditRayonComponent } from './components/main-shop/edit-rayon/edit-rayon.component';
 import { ConfirmDialogModule } from './components/shared/confirm-dialog/confirm-dialog.module';
-
+import { NgApexchartsModule } from "ng-apexcharts";
 import { NgxPrintModule } from 'ngx-print';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
@@ -94,7 +94,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     NgbModule,
     NgxPrintModule,
     NgxPaginationModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgApexchartsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

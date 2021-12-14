@@ -1,3 +1,11 @@
+<button
+        class="btn btn-info"
+        (click)="showProduit()"
+        style="margin-left: 20px; margin-top: 5px; margin-bottom: 5px"
+      >
+        AFFICHER
+      </button>
+
 <div class="container">
 
   <div class="col-md-8">
@@ -12,7 +20,7 @@
           <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Satistique sur la profession de nos clients</h6>
           </div>
-          <!-- Card Body -->
+          <!-- Card Body-->
           <div class="card-body">
               <div id="chartProfession">
                   <apx-chart
@@ -40,8 +48,8 @@
       </div>
       <!-- Card Body -->
       <div class="card-body">
-          <div id="chart">
-              <apx-chart 
+          <div id="chart2">
+              <apx-chart
                 [series]="chartOptions.series"
                 [chart]="chartOptions.chart"
                 [labels]="chartOptions.labels"
@@ -52,8 +60,27 @@
   </div>
 </div>
 </div>
+<div class="col-xl-5 col-lg-6">
+  <div class="card shadow mb-4">
+      <!-- Card Header - Dropdown -->
+      <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Fournisseur Par Categorie</h6>
+      </div>
+      <!-- Card Body -->
+      <div class="card-body">
+        <div id="chart">
+            <apx-chart
+              [series]="chartOptions.series"
+              [chart]="chartOptions.chart"
+              [labels]="chartOptions.labels"
+              [responsive]="chartOptions.responsive"
+            ></apx-chart>
+          </div>
+  </div>
+</div>
 </div>
 
 </div>
+
 
 

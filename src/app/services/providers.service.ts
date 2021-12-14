@@ -53,9 +53,9 @@ export class ProvidersService {
   }
 
 
-  countFournisseurByCat(categorieProduit : string ): Observable<Fournisseur[]>{
+  countFournisseurByCat(categorieProduit : string ): Observable<number>{
     const url =this.url +'/CountDistinctByCat/'+categorieProduit;
-    return this.http.get<Fournisseur[]>(url);
+    return this.http.get<number>(url);
   }
 
 }

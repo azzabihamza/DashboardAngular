@@ -45,7 +45,7 @@ const routes: Routes = [
     {path: 'products', component: MainProductsComponent, children: [
       {path: '', component: ListProductComponent},
       {path: 'addProduct', component: ProductFormComponent},
-      {path: 'detailProduit/:id', component: DetailProduitComponent}
+      {path: 'detailproduit', component: DetailProduitComponent}
     ]},
     {path: 'stock', component: MainStockComponent},
     {path: 'shop', component: MainShopComponent, children: [

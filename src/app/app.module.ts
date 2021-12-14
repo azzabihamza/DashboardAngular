@@ -48,6 +48,7 @@ import { DetailClientComponent } from './components/main-customers/detail-client
 import { ProduitAcheteParClientComponent } from './components/main-customers/produit-achete-par-client/produit-achete-par-client.component';
 import { NgChartsModule } from 'ng2-charts';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { ProductModifyComponent } from './components/main-products/product-modify/product-modify.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +82,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     EditRayonComponent,
     DetailClientComponent,
     ProduitAcheteParClientComponent,
+    ProductModifyComponent
   ],
   imports: [
     FormsModule,
@@ -103,6 +105,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     Ng2SearchPipeModule,
     NgApexchartsModule,
     NgChartsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

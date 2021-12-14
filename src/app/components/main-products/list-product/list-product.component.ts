@@ -13,6 +13,10 @@ export class ListProductComponent implements OnInit {
 
   produits:Produit[];
   closeResult: string;
+  show :boolean =false;
+  produit :Produit;
+  searchText: any;
+  p:number=1;
 
   constructor(
     private ac:ActivatedRoute ,
@@ -23,10 +27,14 @@ export class ListProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProduits();
+   
   }
 
   getProduits(){
-    this.ps.findAllProduits().subscribe((p)=>this.produits=p);
+    this.ps.findAllProduits().subscribe((p)=>{this.produits=p,
+    console.log(p);}
+    
+    );
   }
 
   deleteProduit(idProduit: number, index: number){
@@ -54,5 +62,23 @@ export class ListProductComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+
+  showEdit(i:Produit){
+    this.show = true;
+    this.produit=i;
+    console.log(i);
+  }
+
+  
+  updateProduit(i:Produit)
+  {
+for(let k in this.produits)
+
+  if(this.produits[k].idProduit == i.idProduit)
+  {
+    this.produits[k]=i;
+    this.show = !this.show;
+  }
+}
 
 }

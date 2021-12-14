@@ -1,6 +1,6 @@
 import { Produit } from "./produit";
 
-export class DetailProduit {
+export class DetailProduitEntity {
   idDetailProduit: number;
   dateCreation: Date;
   dateDerniereModification: Date;

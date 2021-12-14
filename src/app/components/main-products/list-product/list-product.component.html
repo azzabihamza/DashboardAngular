@@ -1,5 +1,14 @@
 <div class="card card-table">
   <div class="card-body">
+    <div class="d-flex justify-content-center ">
+
+      <input type="search"  name="search" [(ngModel)]="searchText" class="form-control rounded" placeholder="Search" aria-label="Search"
+      aria-describedby="search-addon" />
+      <span class="input-group-text border-0" id="search-addon">
+          <i class="material-icons" data-toggle="tooltip" title="Search">&#xE8b6;</i>
+      </span>
+  
+  </div>
     <div class="table-responsive">
       <div class="dataTables_wrapper no-footer">
         <div class="dataTables_length">
@@ -13,6 +22,7 @@
             entries
           </label>
         </div>
+        
         <table class="table table-stripped table-hover datatable dataTable no-footer">
           <thead class="thead-light">
             <tr>
@@ -24,14 +34,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let produit of produits; let i=index">
+            <tr *ngFor="let produit of produits | filter : searchText| paginate: { itemsPerPage: 2, currentPage: p } ; let i=index">
               <td>{{produit.idProduit}}</td>
               <td>{{produit.codeProduit}}</td>
               <td>{{produit.libelleProduit}}</td>
               <td>{{produit.prixUnitaire}}</td>
               <td>
-                <a class="btn btn-primary btn-sm" [routerLink]="['detailProduit',produit.idProduit ]">
+                <a type="button" [routerLink]="['/products/detailproduit']" [queryParams]="{id:i}" class="btn btn-success"> Details</a>
+                <!-- <a class="btn btn-primary btn-sm" [routerLink]="['/products/detailproduit']" [queryParams]="{id:i}" class="btn btn-success">
                   Show
+                </a> -->
+                <a class="btn btn-primary btn-sm" (click)="showEdit(produit)">
+                  Modify
                 </a>
                 <a class="btn btn-danger btn-sm" (click)="open(content,produit.idProduit,i)">
                   Delete
@@ -40,10 +54,14 @@
             </tr>
           </tbody>
         </table>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
       </div>
     </div>
   </div>
 </div>
+
+
+
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
@@ -58,4 +76,14 @@
       <button type="button" class="btn btn-outline-dark" (click)="d('Cross click')">Cancel</button>
       <button type="button" class="btn btn-outline-dark" (click)="c('yes')">Yes</button>
   </div>
+
 </ng-template>
+
+
+<div class="col-md-4">
+
+  <div class="container">
+      <app-product-modify *ngIf="show" [produitToEdit]="produit" [test]="true" (edited)="updateProduit($event)"></app-product-modify>
+      </div>
+
+</div>

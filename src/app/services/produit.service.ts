@@ -1,8 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DetailProduit } from '../models/detailProduit';
-import { Fournisseur } from '../models/fournisseur';
+import { DetailProduitEntity } from '../models/detailProduitEntity';
 import { Produit } from '../models/produit';
 import { ResponseJson } from '../models/ResponseJson';
 
@@ -24,6 +23,10 @@ export class ProduitService {
   findAllProduits(): Observable<Produit[]> {
     return this._http.get<Produit[]>(this.url + '/getAllProduits');
   }
+  
+  findDetailProduitByid(id:number): Observable<DetailProduitEntity> {
+    return this._http.get<DetailProduitEntity>(this.url + '/getDetailProduits/'+id);
+  }
 
   addProduit(produit: Produit): Observable<Produit> {
     return this._http.post<Produit>(this.url + '/addProduit', produit, this.httpOptions);
@@ -37,17 +40,14 @@ export class ProduitService {
     return this._http.put<Produit>(this.url + '/updateProduit', produit, this.httpOptions);
   }
 
-  addDetail(detailProduit: DetailProduit): Observable<ResponseJson> {
-    return this._http.post<ResponseJson>(this.url + '/addDetailProduit', detailProduit, this.httpOptions);
+  addDetail(detailProduitEntity: DetailProduitEntity): Observable<ResponseJson> {
+    return this._http.post<ResponseJson>(this.url + '/addDetailProduit', detailProduitEntity, this.httpOptions);
   }
 
-  FournisseurByProduit(id:number) : Observable<Fournisseur[]> {
-    return this._http.get<Fournisseur[]>(this.url+'/getFournisseurProduit/'+id);
+  findProduitByID(id:number): Observable<Produit> {
+    return this._http.get<Produit>(this.url + '/getProduit/' + id);
   }
 
-  FournisseurToProduit(idFournisseur : number , idProduit : number): Observable<Produit> {
-    return this._http.put<Produit>(this.url+'/assignFournisseurToProduit/' + idFournisseur+ '/'+idProduit, Produit, this.httpOptions);
-  }
 
 
 }

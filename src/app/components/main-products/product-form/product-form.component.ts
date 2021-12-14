@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DetailProduit } from 'src/app/models/detailProduit';
+import { DetailProduitEntity } from 'src/app/models/detailProduitEntity';
 import { Produit } from 'src/app/models/produit';
 import { Rayon } from 'src/app/models/rayon';
 import { Stock } from 'src/app/models/stock';
@@ -19,7 +19,7 @@ export class ProductFormComponent implements OnInit {
   stock:Stock;
   rayons: Rayon[];
   rayon:Rayon;
-  detailProduit: DetailProduit;
+  detailProduit: DetailProduitEntity;
   produit: Produit;
 
   constructor(
@@ -77,7 +77,7 @@ export class ProductFormComponent implements OnInit {
     this.produit.prixUnitaire=this.prixUnitaire.value;
     this.produit.stock=this.stock;
     this.produit.rayon=this.rayon;
-    this.detailProduit=new DetailProduit();
+    this.detailProduit=new DetailProduitEntity();
     this.detailProduit.categorieProduit=this.categorieProduit.value;
     this.produit.detailProduitEntity=this.detailProduit;
   }

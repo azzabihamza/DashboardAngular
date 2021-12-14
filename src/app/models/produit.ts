@@ -1,5 +1,5 @@
 import { DetailFacture } from "./detailFacture";
-import { DetailProduit } from "./detailProduit";
+import { DetailProduitEntity } from "./detailProduitEntity";
 import { Fournisseur } from "./fournisseur";
 import { Rayon } from "./rayon";
 import { Stock } from "./stock";
@@ -12,6 +12,6 @@ export class Produit {
   stock: Stock;
   rayon: Rayon;
   fournisseurs: Fournisseur[];
-  detailProduitEntity: DetailProduit;
-  detailFactures: DetailFacture[];
+  detailProduitEntity: DetailProduitEntity;
+ // detailFactures: DetailFacture[];
 }

@@ -61,7 +61,7 @@ export class ListProvidersComponent implements OnInit {
 
   }
   ListeFournisseurByProd(){
-    this.Prod.FournisseurByProduit(this.valProd).subscribe((prov)=> (this.providers=prov));
+    //this.Prod.FournisseurByProduit(this.valProd).subscribe((prov)=> (this.providers=prov));
   }
 
   AddProvider(i: Fournisseur) {
@@ -122,7 +122,7 @@ ProduitOfFournisseur(idF : number){
     this.valProd= event.target.value;
   }
   AffectationFournisseurProduit(fourisseurId:number){
-    this.Prod.FournisseurToProduit(fourisseurId, this.valProd).subscribe();
+    //this.Prod.FournisseurToProduit(fourisseurId, this.valProd).subscribe();
   }
 
 

@@ -1,1 +1,39 @@
-<p>detail-produit works!</p>
+
+
+      <main class="container">
+ 
+        <!-- Left Column / Headphones Image -->
+        <div class="left-column">
+          <img data-image="red" class="active" src="../assets/images/produit.jpg" alt="">
+        </div>
+       
+       
+        <!-- Right Column -->
+        <div class="right-column">
+       
+          <!-- Product Description -->
+          <div class="product-description">
+            <span>{{produits[y].detailProduitEntity.categorieProduit}}</span>
+            <h1>{{produits[y].libelleProduit}}</h1>
+            <p>AJOUTE LE : {{produits[y].detailProduitEntity.dateCreation}}</p>
+            <p>MODIFIE LE : {{produits[y].detailProduitEntity.dateDerniereModification}}</p>
+          </div>
+       
+          <!-- Product Configuration -->
+          <div class="product-configuration">
+       
+      
+            
+       
+            <!-- Cable Configuration -->
+            <div class="cable-config">
+              <span>CODE DU PRODUIT  : {{produits[y].codeProduit}}</span>
+            </div>
+          </div>
+       
+          <!-- Product Pricing -->
+          <div class="product-price">
+            <span>PRIX DU PRODUIT  : {{produits[y].prixUnitaire}}</span>
+          </div>
+        </div>
+      </main>

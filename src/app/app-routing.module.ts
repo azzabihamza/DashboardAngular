@@ -22,6 +22,9 @@ import { AddRayonComponent } from './components/main-shop/add-rayon/add-rayon.co
 import { DetailProduitComponent } from './components/main-products/detail-produit/detail-produit.component';
 import { DetailClientComponent } from './components/main-customers/detail-client/detail-client.component';
 import { ProduitAcheteParClientComponent } from './components/main-customers/produit-achete-par-client/produit-achete-par-client.component';
+import { AddstockComponent } from './components/main-stock/addstock/addstock.component';
+import { DetailStockComponent } from './components/main-stock/detail-stock/detail-stock.component';
+import { PageStockComponent } from './components/main-stock/page-stock/page-stock.component';
 
 
 const routes: Routes = [
@@ -37,17 +40,17 @@ const routes: Routes = [
     {path: 'ProduitByClient/:idclient/:idFacture', component: ProduitAcheteParClientComponent },
     {path: 'updatecustomer"', component: UpdateFormComponent},
 
-    /*{
-      path:'products',
-      component: MainProductsComponent,
-      loadChildren:()=>import('./components/main-products/product.module').then(m=>m.ProductModule)
-    },*/
+
     {path: 'products', component: MainProductsComponent, children: [
       {path: '', component: ListProductComponent},
       {path: 'addProduct', component: ProductFormComponent},
       {path: 'detailproduit', component: DetailProduitComponent}
     ]},
-    {path: 'stock', component: MainStockComponent},
+    {path: 'stock', component: PageStockComponent, children: [
+      {path: '', component: MainStockComponent},
+      {path: "addstock", component: AddstockComponent},
+      {path:"details", component:DetailStockComponent },
+    ]},
     {path: 'shop', component: MainShopComponent, children: [
       {path: '', component: ListRayonComponent},
       {path: 'addRayon', component: AddRayonComponent},

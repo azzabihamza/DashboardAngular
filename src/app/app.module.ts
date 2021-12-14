@@ -49,6 +49,10 @@ import { ProduitAcheteParClientComponent } from './components/main-customers/pro
 import { NgChartsModule } from 'ng2-charts';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ProductModifyComponent } from './components/main-products/product-modify/product-modify.component';
+import { AddstockComponent } from './components/main-stock/addstock/addstock.component';
+import { EditstockComponent } from './components/main-stock/editstock/editstock.component';
+import { DetailStockComponent } from './components/main-stock/detail-stock/detail-stock.component';
+import { PageStockComponent } from './components/main-stock/page-stock/page-stock.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +86,11 @@ import { ProductModifyComponent } from './components/main-products/product-modif
     EditRayonComponent,
     DetailClientComponent,
     ProduitAcheteParClientComponent,
-    ProductModifyComponent
+    ProductModifyComponent,
+    AddstockComponent,
+    EditstockComponent,
+    DetailStockComponent,
+    PageStockComponent
   ],
   imports: [
     FormsModule,
@@ -104,7 +112,7 @@ import { ProductModifyComponent } from './components/main-products/product-modif
     NgxPaginationModule,
     Ng2SearchPipeModule,
     NgApexchartsModule,
-    NgChartsModule
+    NgChartsModule,
     
   ],
   providers: [],

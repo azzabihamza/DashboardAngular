@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Client } from '../models/client';
 import { Facture } from '../models/facture';
+import { Produit } from '../models/produit';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,24 @@ export class CustomerService {
 
   constructor(private _http:HttpClient) { }
 
+
+
+  getNumberCustomerOrdinaire()
+  {
+    return this._http.get<number>(this.CustomersUrl+"/client-fidele");
+  }
+  getNumberCustomerPremium ()
+  {
+    return this._http.get<number>(this.CustomersUrl+"/client-premium");
+  }
+  getNumberCustomerFidele()
+  {
+    return this._http.get<number>(this.CustomersUrl+"/client-ordinaire");
+  }
+
+  getPurchaseHistoryByClient(idClient:string,idfacture:string):Observable<Produit[]>{
+    return this._http.get<Produit[]>(this.CustomersUrl+"/Produit-by-client/"+idClient+"/"+idfacture);
+  }
 
   getAllCustomersFromDB():Observable<Client[]>{
     return this._http.get<Client[]>(this.CustomersUrl+"/getAllClients");

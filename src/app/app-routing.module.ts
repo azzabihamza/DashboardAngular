@@ -20,6 +20,8 @@ import { InvoiceComponent } from './components/main-invoices/invoice/invoice.com
 import { ListRayonComponent } from './components/main-shop/list-rayon/list-rayon.component';
 import { AddRayonComponent } from './components/main-shop/add-rayon/add-rayon.component';
 import { DetailProduitComponent } from './components/main-products/detail-produit/detail-produit.component';
+import { DetailClientComponent } from './components/main-customers/detail-client/detail-client.component';
+import { ProduitAcheteParClientComponent } from './components/main-customers/produit-achete-par-client/produit-achete-par-client.component';
 
 
 const routes: Routes = [
@@ -30,6 +32,11 @@ const routes: Routes = [
       {path: 'addcustomer', component: CustomersFormComponent},
       {path: 'updatecustomer/:id"', component: UpdateFormComponent}
     ]},
+    {path: 'addcustomer', component: CustomersFormComponent},
+    {path: 'customers/:idclient', component: DetailClientComponent },
+    {path: 'ProduitByClient/:idclient/:idFacture', component: ProduitAcheteParClientComponent },
+    {path: 'updatecustomer"', component: UpdateFormComponent},
+
     /*{
       path:'products',
       component: MainProductsComponent,

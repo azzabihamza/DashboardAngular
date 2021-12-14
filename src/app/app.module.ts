@@ -44,6 +44,10 @@ import { ConfirmDialogModule } from './components/shared/confirm-dialog/confirm-
 
 import { NgxPrintModule } from 'ngx-print';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { DetailClientComponent } from './components/main-customers/detail-client/detail-client.component';
+import { ProduitAcheteParClientComponent } from './components/main-customers/produit-achete-par-client/produit-achete-par-client.component';
+import { NgChartsModule } from 'ng2-charts';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 @NgModule({
   declarations: [
@@ -75,6 +79,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ListRayonComponent,
     AddRayonComponent,
     EditRayonComponent,
+    DetailClientComponent,
+    ProduitAcheteParClientComponent,
   ],
   imports: [
     FormsModule,
@@ -94,7 +100,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     NgbModule,
     NgxPrintModule,
     NgxPaginationModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgApexchartsModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

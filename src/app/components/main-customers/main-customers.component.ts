@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ChartComponent } from 'ng-apexcharts';
 import { Client } from 'src/app/models/client';
 import { CustomerService } from 'src/app/services/customer.service';
 import Swal from 'sweetalert2';
@@ -19,12 +20,17 @@ export class MainCustomersComponent implements OnInit {
   p: number = 1;
   closeResult='';
   searchText:any;
-
+  @ViewChild("chart") chart: ChartComponent;
   public chartOptions;
 
   public doughnutChartLabels: any[] = [];
   public doughnutChartData: any = [];
   public typeData: Array<Client> = [];
+
+  nbClientOrdinaire:number=0;
+  nbClientFidele:number=0;
+  nbClientPremium:number=0;
+
   constructor(private cs:CustomerService,private modalService: NgbModal ,private ac:ActivatedRoute,private router: Router)
   {
 
@@ -35,20 +41,29 @@ export class MainCustomersComponent implements OnInit {
   ngOnInit(): void {
     this.cs.getAllCustomersFromDB().subscribe(res=> {this.list = res,
       this.listInitial=this.list;
-
-
      console.log(this.list);
-     for(let k in this.list){
-      console.log("client "+k+" : "+this.list[k].idClient);
-    }
-    //charts
-   /* this.chartOptions = {
-      series: [44, 55, 13, 43, 22],
+    })
+
+
+
+    this.cs.getNumberCustomerFidele().subscribe(res=> {this.nbClientFidele = res
+      console.log("client fidele "+this.nbClientFidele);
+
+  this.cs.getNumberCustomerOrdinaire().subscribe(res=> {this.nbClientOrdinaire = res,
+        console.log("client nbClientOrdinaire "+this.nbClientOrdinaire);
+
+       this.cs.getNumberCustomerPremium().subscribe(res=> {this.nbClientPremium = res,
+        console.log("client nbClientPremium "+this.nbClientPremium);
+
+          //charts
+
+     this.chartOptions = {
+      series: [this.nbClientFidele,this.nbClientOrdinaire,this.nbClientPremium],
       chart: {
         width: 380,
         type: "pie"
       },
-      labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
+      labels: ["Fidele", "Ordinaire", "Premium"],
       responsive: [
         {
           breakpoint: 480,
@@ -62,13 +77,21 @@ export class MainCustomersComponent implements OnInit {
           }
         }
       ]
-    };  */
-
-
-    })
+    };  }) }) })
 
 
   }
+
+getCatOrdinaire()
+{
+  for(let k in this.list){
+    if(this.list[k].categorieClient=="ORDINARE")
+    {
+      this.nbClientOrdinaire+=1;
+    }
+    console.log("nbClientOrdinaire = "+this.nbClientOrdinaire);
+  }
+}
 
 
   getCustomerByCategory(cat:string){
@@ -161,4 +184,5 @@ private getDismissReason(reason: any): string {
   }
 }
 
-}
+  }
+

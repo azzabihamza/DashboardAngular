@@ -85,6 +85,7 @@ export class UpdateFormComponent implements OnInit {
 
 
   }
+  this.modalService.activeInstances.closed;
   console.log(change);
   console.log(this.CustomerToEdit);
 
@@ -114,13 +115,14 @@ export class UpdateFormComponent implements OnInit {
 
 
   edit(){
-    Swal.fire('Hi', 'Client modifié avec succés!', 'success')
+    Swal.fire('Hi', 'Client modifié avec succés!', 'success').then((result) => {
+      if (result.value) {
+        location.reload();
+      }
+    });
 
     this.edited.emit(this.myForm.getRawValue());
-    this.cs.updateCustomer(this.myForm.getRawValue()).subscribe(data => {
-      this.goToMainPage();
-    }
-    , error => console.log(error));
+    this.cs.updateCustomer(this.myForm.getRawValue()).subscribe( error => console.log(error));
 
    console.log(this.myForm.getRawValue());
 
@@ -134,7 +136,8 @@ export class UpdateFormComponent implements OnInit {
   }*/
 
   goToMainPage(){
-    this.router.navigate(['/customers']);
+    // this.router.navigate(['/customers']);
+   location.reload();
   }
 
 
@@ -160,5 +163,6 @@ private getDismissReason(reason: any): string {
 openModalDialogCustomClass(content) {
   this.modalService.open(content, { modalDialogClass: 'dark-modal' });
 }
+
 
 }

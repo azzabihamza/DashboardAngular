@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Client } from 'src/app/models/client';
 import { CustomerService } from 'src/app/services/customer.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-customers-form',
@@ -10,6 +11,7 @@ import { CustomerService } from 'src/app/services/customer.service';
   styleUrls: ['./customers-form.component.css']
 })
 export class CustomersFormComponent implements OnInit {
+
   Customer: Client  = new Client();
   myForm : FormGroup;
 
@@ -54,7 +56,11 @@ export class CustomersFormComponent implements OnInit {
   saveCustomer(){
     this.CustomerService.addCustomer(this.myForm.getRawValue()).subscribe(data => {
      console.log(data);
-     this.goToMainPage();
+     Swal.fire('Hi', 'Client ajouté avec succés!', 'success').then((result) => {
+      if (result.value) {
+        this.goToMainPage();      }
+    });
+
     });
   }
 

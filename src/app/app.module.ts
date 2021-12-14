@@ -20,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { InvoiceFilterComponent } from './components/main-invoices/invoice-filter/invoice-filter.component';
 import { InvoiceFormComponent } from './components/main-invoices/invoice-form/invoice-form.component';
 import { InvoiceDetailFormComponent } from './components/main-invoices/invoice-detail-form/invoice-detail-form.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BreadcrumbComponent } from './components/main-invoices/breadcrumb/breadcrumb.component';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { AccordionModule } from 'primeng/accordion';
@@ -43,6 +43,7 @@ import { EditRayonComponent } from './components/main-shop/edit-rayon/edit-rayon
 import { ConfirmDialogModule } from './components/shared/confirm-dialog/confirm-dialog.module';
 
 import { NgxPrintModule } from 'ngx-print';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { NgxPrintModule } from 'ngx-print';
     EditRayonComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -90,7 +92,9 @@ import { NgxPrintModule } from 'ngx-print';
     NgbModule,
     IonicModule.forRoot(),
     NgbModule,
-    NgxPrintModule
+    NgxPrintModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Client } from '../models/client';
+import { Facture } from '../models/facture';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,21 @@ export class CustomerService {
 
   getAllCustomersFromDB():Observable<Client[]>{
     return this._http.get<Client[]>(this.CustomersUrl+"/getAllClients");
+  }
+
+  getStatClient():Observable<Client[]>{
+    return this._http.get<Client[]>(this.CustomersUrl+"/stat-client");
+  }
+
+
+  getCustomerByCategory(categorie:string):Observable<Client[]>{
+    return this._http.get<Client[]>(this.CustomersUrl+"/retrieve-client-byCategorieClient/"+categorie);
+  }
+  getFactureByClient(id:string):Observable<Facture[]>{
+    return this._http.get<Facture[]>(this.CustomersUrl+"/facture/"+id);
+  }
+  getCustomerByProfession(profession:string):Observable<Client[]>{
+    return this._http.get<Client[]>(this.CustomersUrl+"/retrieve-client-byProfession/"+profession);
   }
 
   deleteCustomer (Customer: Client | number): Observable<Client> {

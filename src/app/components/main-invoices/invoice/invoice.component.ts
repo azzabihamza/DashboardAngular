@@ -29,8 +29,9 @@ export class InvoiceComponent implements OnInit {
   }
 
   payInvoice() {
+    console.log(this.invoice);
     this.invoiceService.updateFactureStatus(this.invoice).subscribe();
-    this.router.navigate(['/factures']);
+    this.router.navigate(['/invoices']);
   }
 
 

@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Client } from 'src/app/models/client';
 import { DetailFacture } from 'src/app/models/detailFacture';
 import { Facture } from 'src/app/models/facture';
 import { Produit } from 'src/app/models/produit';
 import { CustomerService } from 'src/app/services/customer.service';
 import { InvoiceService } from 'src/app/services/invoice.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-invoice-form',
@@ -25,7 +27,7 @@ export class InvoiceFormComponent implements OnInit {
   totalFacture: number;
   montantRemise=0;
 
-  constructor(private customerService: CustomerService,private invoiceService: InvoiceService) { }
+  constructor(private customerService: CustomerService,private invoiceService: InvoiceService, private router: Router) { }
 
   ngOnInit(): void {
     this.intializeForm();
@@ -97,6 +99,10 @@ export class InvoiceFormComponent implements OnInit {
     });
     this.alert = true;
     this.invoiceForm.reset();
+    Swal.fire('Hi', 'Facture ajouté avec succés!', 'success').then((result) => {
+      if (result.value) {
+        this.goToMainPage();      }
+    });
   }
 
   getClient(){
@@ -111,6 +117,10 @@ export class InvoiceFormComponent implements OnInit {
 
   closeAlert() {
     this.alert = false;
+  }
+
+  goToMainPage(){
+    this.router.navigate(['/invoices']);
   }
 
 }

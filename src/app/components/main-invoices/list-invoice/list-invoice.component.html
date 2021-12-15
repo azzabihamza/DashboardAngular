@@ -31,8 +31,21 @@
               <td>{{invoice.client.nom}} {{invoice.client.prenom}}</td>
               <td>{{invoice.dateFacture}}</td>
               <td>{{invoice.montantFacture}}</td>
-              <td>{{invoice.active}}</td>
               <td>
+
+                <div *ngIf="invoice.active==true; else elseBlock">
+									<i class="fa fa-circle text-blue-m2 text-xs mr-1"></i>
+
+									<span class="badge badge-warning badge-pill px-25">Unpaid</span>
+								</div>
+                <ng-template #elseBlock>
+                  <i class="fa fa-circle text-blue-m2 text-xs mr-1"></i>
+
+									<span class="badge badge-success badge-pill px-25">Paid</span>
+                </ng-template>
+              </td>
+              <td>
+
                 <a class="btn btn-primary btn-sm" [routerLink]="['showInvoice',invoice.idFacture ]">
                   Show
                 </a>

@@ -50,10 +50,10 @@
       <div class="card-body">
           <div id="chart2">
               <apx-chart
-                [series]="chartOptions.series"
-                [chart]="chartOptions.chart"
-                [labels]="chartOptions.labels"
-                [responsive]="chartOptions.responsive"
+                [series]="chartOptions2.series"
+                [chart]="chartOptions2.chart"
+                [labels]="chartOptions2.labels"
+                [responsive]="chartOptions2.responsive"
           ></apx-chart>
 
       </div>
@@ -77,6 +77,24 @@
             ></apx-chart>
           </div>
   </div>
+</div>
+</div>
+
+<div class="card shadow mb-4">
+  <!-- Card Header - Dropdown -->
+  <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Produit Par Categorie</h6>
+  </div>
+  <!-- Card Body -->
+  <div class="card-body">
+    <div id="chart3">
+        <apx-chart
+          [series]="chartOptions3.series"
+          [chart]="chartOptions3.chart"
+          [labels]="chartOptions3.labels"
+          [responsive]="chartOptions3.responsive"
+        ></apx-chart>
+      </div>
 </div>
 </div>
 

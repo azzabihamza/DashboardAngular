@@ -23,7 +23,7 @@ export class ProduitService {
   findAllProduits(): Observable<Produit[]> {
     return this._http.get<Produit[]>(this.url + '/getAllProduits');
   }
-  
+
   findDetailProduitByid(id:number): Observable<DetailProduitEntity> {
     return this._http.get<DetailProduitEntity>(this.url + '/getDetailProduits/'+id);
   }
@@ -45,7 +45,12 @@ export class ProduitService {
   }
 
   findProduitByID(id:number): Observable<Produit> {
-    return this._http.get<Produit>(this.url + '/getProduit/' + id);
+    return this._http.get<Produit>(this.url + '/getProduitById/' + id);
+  }
+
+  CountDistinctByCatProd(categorieProduit : string ): Observable<number>{
+    const url =this.url +'/CountDistinctByCatProd/'+categorieProduit;
+    return this._http.get<number>(url);
   }
 
 

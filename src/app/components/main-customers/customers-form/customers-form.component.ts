@@ -23,7 +23,7 @@ export class CustomersFormComponent implements OnInit {
       idClient : new FormControl('',[Validators.required]),
       nom : new FormControl('',[Validators.required]),
       prenom : new FormControl('',[Validators.required]),
-      email : new FormControl('',[Validators.required]),
+      email : new FormControl('',[Validators.required,Validators.email]),
       dateNaissance : new FormControl('',[Validators.required]),
       profession : new FormControl('',[Validators.required]),
       categorieClient : new FormControl('',[Validators.required]),

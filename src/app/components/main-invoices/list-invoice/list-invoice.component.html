@@ -3,7 +3,8 @@
 
     <div class="table-responsive">
       <div class="dataTables_wrapper no-footer">
-        <div class="dataTables_length">
+
+        <div class="dataTables_length" [ngStyle]="{color:'red'}">
           <label>Show
             <select class="" data-show="10,25,50,100" name="DataTables_Table_length">
               <option value="10">10</option>
@@ -58,6 +59,7 @@
         </table>
       </div>
     </div>
+
   </div>
 </div>
 <ng-template #content let-c="close" let-d="dismiss">

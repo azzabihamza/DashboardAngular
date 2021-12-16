@@ -39,6 +39,8 @@
 
         <div class="alert alert-danger" role="alert" *ngIf="myEmail.errors">
           <div *ngIf="myEmail.errors.required">Champs obligatoire</div>
+          <div *ngIf="myEmail.errors.email">L'email doit être valide</div>
+
       </div>
 
     </div>
@@ -83,7 +85,7 @@
             <option selected>Open this select menu</option>
             <option value="FIDELE">FIDELE</option>
             <option value="ORDINAIRE">ORDINAIRE</option>
-            <option value="PRENIUM">PREMIUM</option>
+            <option value="PREMIUM">PREMIUM</option>
 
           </select>
 

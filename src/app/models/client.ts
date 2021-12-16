@@ -8,5 +8,6 @@ export class Client {
   email: string;
   profession: string;
   categorieClient: string;
+  facture!: Facture;
     //picture!: string;
 }

@@ -60,7 +60,7 @@ export class EditstockComponent implements OnInit {
     if (!changes.stockToEdit.firstChange){
       if (this.test==true)
       {
-        this.modalService.open(this.content,  { centered: true ,windowClass: 'my-class'
+        this.modalService.open(this.content,{ centered: true , size: 'lg',windowClass: 'my-class'
       });
       }
       this.myForm.setControl('idStock', new FormControl (this.stockToEdit.idStock));

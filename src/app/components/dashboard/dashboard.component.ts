@@ -11,6 +11,7 @@ import {
 } from "ng-apexcharts";
 import { Fournisseur } from 'src/app/models/fournisseur';
 import { ProvidersService } from 'src/app/services/providers.service';
+import { ProduitService } from 'src/app/services/produit.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -35,6 +36,10 @@ export class DashboardComponent implements OnInit {
   @ViewChild("chart2") chart2: ChartComponent;
   public chartOptions2  ;
 
+
+  @ViewChild("chart3") chart3: ChartComponent;
+  public chartOptions3  ;
+
   @ViewChild("chartProfession") chartProfession: ChartComponent;
   public chartOptionsProfession;
 
@@ -47,6 +52,12 @@ export class DashboardComponent implements OnInit {
   nbClientPremium:number=0;
 
 
+
+QUINCAILLERIEProd: number;
+  ALIMENTAIREProd : number ;
+  ELECROMENAGERProd: number ;
+
+
   DOCTEUR :number=0;
   INGENIEUR:number=0;
   ETUDIANT:number=0;
@@ -54,11 +65,15 @@ export class DashboardComponent implements OnInit {
   CADRE:number=0;
   AUTRE:number=0;
 
-  constructor(private cs:CustomerService,private modalService: NgbModal ,private ac:ActivatedRoute,private router: Router , private PS: ProvidersService)
+  constructor(private produitService:ProduitService,private cs:CustomerService,private modalService: NgbModal ,private ac:ActivatedRoute,private router: Router , private PS: ProvidersService)
 {
   this.PS.countFournisseurByCat("ALIMENTAIRE").subscribe((res) => (this.ALIMENTAIRE = res));
   this.PS.countFournisseurByCat("QUINCAILLERIE").subscribe((res) => (this.QUINCAILLERIE = res));
-  this.PS.countFournisseurByCat("ELECROMENAGER").subscribe((res) => (this.ELECROMENAGER = res));
+  this.PS.countFournisseurByCat("ELECTROMENAGER").subscribe((res) => (this.ELECROMENAGER = res));
+
+ this.produitService.CountDistinctByCatProd("ALIMENTAIRE").subscribe((res)=>(this.ALIMENTAIREProd=res));
+ this.produitService.CountDistinctByCatProd("QUINCAILLERIE").subscribe((res)=>(this.QUINCAILLERIEProd=res));
+ this.produitService.CountDistinctByCatProd("ELECTROMENAGER").subscribe((res)=>(this.ELECROMENAGERProd=res));
 }
   ngOnInit(): void {
 
@@ -248,6 +263,33 @@ yaxis: {
         }
       ]
     };
+
+
+    this.chartOptions3 = {
+      //  series: [this.quincaillerie,this.alimentaire,this.electromenager],
+      series: [this.QUINCAILLERIEProd, this.ALIMENTAIREProd, this.ELECROMENAGERProd],
+      chart: {
+          width: 450,
+          type: "pie"
+        },
+        labels: ["QUINCAILLERIE", "ALIMENTAIRE", "ELECTROMENAGER"],
+
+        responsive: [
+          {
+            breakpoint: 480,
+            options: {
+
+              chart: {
+                width: 200
+              },
+              legend: {
+                position: "bottom"
+              }
+            }
+          }
+        ]
+      };
+
    }
 }
 

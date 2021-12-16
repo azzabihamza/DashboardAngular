@@ -2,7 +2,7 @@
   <div class="card-body">
     <div class="table-responsive">
       <div class="dataTables_wrapper no-footer">
-        <div class="dataTables_length">
+        <div class="dataTables_length" [ngStyle]="{color:'red'}">
           <label>Show
             <select class="" data-show="10,25,50,100" name="DataTables_Table_length">
               <option value="10">10</option>
@@ -13,6 +13,7 @@
             entries
           </label>
         </div>
+
         <table class="table table-stripped table-hover datatable dataTable no-footer">
           <thead class="thead-light">
             <tr>
@@ -29,8 +30,8 @@
               <td>{{rayon.libelleRayon}}</td>
 
               <td>
-                <a class="btn btn-success btn-sm">
-                  Edit
+                <a class="btn btn-success btn-sm" [routerLink]="['editRayon',rayon.idRayon]">
+                     Edit
                 </a>
                 <a class="btn btn-danger btn-sm" (click)="deleteRayon(rayon.idRayon,i)">
                   Delete
@@ -39,7 +40,8 @@
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   </div>
-</div>
+

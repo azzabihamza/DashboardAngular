@@ -53,6 +53,8 @@ import { AddstockComponent } from './components/main-stock/addstock/addstock.com
 import { EditstockComponent } from './components/main-stock/editstock/editstock.component';
 import { DetailStockComponent } from './components/main-stock/detail-stock/detail-stock.component';
 import { PageStockComponent } from './components/main-stock/page-stock/page-stock.component';
+import { DetailProduitComponent } from './components/main-products/detail-produit/detail-produit.component';
+  
 
 @NgModule({
   declarations: [
@@ -90,7 +92,8 @@ import { PageStockComponent } from './components/main-stock/page-stock/page-stoc
     AddstockComponent,
     EditstockComponent,
     DetailStockComponent,
-    PageStockComponent
+    PageStockComponent,
+    DetailProduitComponent
   ],
   imports: [
     FormsModule,
@@ -113,7 +116,7 @@ import { PageStockComponent } from './components/main-stock/page-stock/page-stoc
     Ng2SearchPipeModule,
     NgApexchartsModule,
     NgChartsModule,
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

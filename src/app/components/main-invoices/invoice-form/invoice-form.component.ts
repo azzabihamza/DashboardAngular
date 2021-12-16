@@ -37,7 +37,7 @@ export class InvoiceFormComponent implements OnInit {
 
   intializeForm() {
     this.invoiceForm = new FormGroup({
-      client: new FormControl('',[Validators.required]),
+      client: new FormControl(''),
       montantFacture: new FormControl(''),
       montantRemise: new FormControl(''),
       detailFacture: new FormControl('')

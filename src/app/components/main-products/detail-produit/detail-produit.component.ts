@@ -11,16 +11,27 @@ import { DetailProduitEntity } from 'src/app/models/detailProduitEntity';
 })
 export class DetailProduitComponent implements OnInit {
   y=0;
+  i=0;
   produits:Produit[];
+  produit:Produit;
   constructor(private ac:ActivatedRoute , private ps:ProduitService, private router: Router) { }
 
   ngOnInit(): void {
-    this.ps.findAllProduits().subscribe((p)=>{this.produits=p;
-      console.log(this.produits)})
-    this.ac.queryParams.subscribe(params=> { 
-      this.y=params['id'];
-      console.log("daaad"+this.y);
-    });
+
+
+    // this.ps.findAllProduits().subscribe((p)=>{this.produits=p;
+    //   console.log(this.produits)})
+    // this.ac.queryParams.subscribe(params=> {
+    //   this.y=params['id'];
+    //   console.log("daaad"+this.y);
+    // });
+    this.ac.queryParams.subscribe(params=> {
+      this.i=params['id'];
+    })
+    this.ps.findProduitByID(this.i).subscribe(res=> {
+      this.produit=res;
+    })
   }
+
 
 }
